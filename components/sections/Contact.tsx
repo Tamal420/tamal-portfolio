@@ -124,8 +124,6 @@ export function Contact() {
           <a
             href={contactContent.cvPath}
             download={SITE.cvFilename}
-            target="_blank"
-            rel="noopener noreferrer"
             className={cn(
               'inline-flex items-center justify-center gap-2 w-full sm:w-auto',
               'h-12 px-6 rounded-md text-sm font-semibold',

@@ -8,7 +8,7 @@ export const metricCards: MetricCard[] = [
     label: 'Products tested',
   },
   {
-    value: '2',
+    value: '3',
     label: 'Industries covered',
   },
   {
@@ -35,7 +35,7 @@ export const contributionHighlights: ContributionHighlight[] = [
     icon: 'api',
     title: 'API and DevTools validation',
     description:
-      'REST API testing using Postman and Swagger combined with Chrome DevTools-based API monitoring during live test execution. Validating request and response structures, status codes, and frontend-backend integration across healthcare and education platforms.',
+      'REST API testing using Postman and Swagger combined with Chrome DevTools-based API monitoring during live test execution. Validating request and response structures, status codes, and frontend-backend integration across healthcare, education, and music streaming platforms.',
   },
   {
     id: 'mobile',
@@ -54,8 +54,8 @@ export const impactStatements = [
   },
   {
     id: 'impact-02',
-    text: 'Tested six products across healthcare and education — covering web applications, Android apps, iOS apps, and REST APIs — applying RBAC testing, authorization workflow validation, billing verification, and cross-browser compatibility checks within a single professional year.',
-    context: '6 projects · Healthcare SaaS + EdTech + Mobile Apps · Web + Android + iOS + API',
+    text: 'Tested six products across healthcare, education, and music streaming — covering web applications, Android apps, iOS apps, and REST APIs — applying RBAC testing, authorization workflow validation, billing verification, and cross-browser compatibility checks within a single professional year.',
+    context: '6 projects · Healthcare SaaS + EdTech + Music Streaming · Web + Android + iOS + API',
   },
   {
     id: 'impact-03',

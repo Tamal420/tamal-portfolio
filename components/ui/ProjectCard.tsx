@@ -12,7 +12,6 @@ const INDUSTRY_ICON: Record<string, string> = {
   healthcare: 'heart-rate-monitor',
   edtech: 'graduation-cap',
   streaming: 'music',
-  mobile: 'device-mobile',
 }
 
 interface ProjectCardProps {

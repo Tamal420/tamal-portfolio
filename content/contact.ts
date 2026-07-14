@@ -26,7 +26,7 @@ export const heroContent: HeroContent = {
   hookSentence:
     "I test software where a missed bug doesn't just frustrate a user — it disrupts a patient's care record.",
   contextLine:
-    'Testing web, Android, and iOS applications across healthcare and education platforms — with growing experience in Playwright and Python automation.',
+    'Testing web, Android, and iOS applications across healthcare, education, and music streaming platforms — with growing experience in Playwright and Python automation.',
   statusLabel: 'Open to new opportunities',
   platforms: ['Web', 'Android', 'iOS', 'REST API'],
   cvLabel: 'Download CV',
@@ -36,7 +36,7 @@ export const heroContent: HeroContent = {
 
 export const aboutContent = {
   paragraphs: [
-    `I'm an Associate SQA Engineer at Kaz Software in Dhaka, where I've spent the past year building test coverage across healthcare and education platforms. My core work is manual testing, API testing, and cross-platform mobile testing — covering web applications, Android apps, iOS apps, and REST APIs on products where quality has real consequences.`,
+    `I'm an Associate SQA Engineer at Kaz Software in Dhaka, where I've spent the past year building test coverage across healthcare, education, and music streaming platforms. My core work is manual testing, API testing, and cross-platform mobile testing — covering web applications, Android apps, iOS apps, and REST APIs on products where quality has real consequences.`,
 
     `The healthcare domain has shaped how I work. Testing WebEVV and ExpertEVV — platforms that record and manage caregiver visit data, patient authorizations, billing, and invoicing for home healthcare providers — means that thoroughness is not optional. A missed defect in a billing workflow or an authorization flow doesn't just produce a bug report: it produces an incorrect financial record or a care delivery discrepancy. I think about what the data represents, not only whether the interface renders correctly.`,
 
@@ -53,7 +53,7 @@ export const aboutContent = {
     {
       year: '2024',
       title: 'Expanded to 6 projects',
-      description: 'Delivered QA across healthcare SaaS, EdTech, and mobile applications — adding API testing and cross-platform mobile coverage.',
+      description: 'Delivered QA across healthcare SaaS, EdTech, and music streaming — adding API testing and cross-platform mobile coverage.',
     },
     {
       year: 'Now',

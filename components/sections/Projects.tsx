@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { projects } from '@/content/projects'
 import { ProjectCard } from '@/components/ui/ProjectCard'
@@ -15,7 +15,6 @@ const FILTER_TO_INDUSTRY: Partial<Record<FilterValue, Industry>> = {
   healthcare: 'healthcare',
   edtech: 'edtech',
   streaming: 'streaming',
-  mobile: 'mobile',
 }
 
 /**
@@ -36,7 +35,18 @@ const FILTER_TO_INDUSTRY: Partial<Record<FilterValue, Industry>> = {
  */
 export function Projects() {
   const [filter, setFilter] = useState<FilterValue>('all')
-  const [openId, setOpenId] = useState<string | null>('webevv') // WebEVV open by default
+  const [openId, setOpenId] = useState<string | null>(null)
+
+  // Open a specific project when Contributions (or similar) asks for it
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail
+      setFilter('all')
+      setOpenId(id)
+    }
+    window.addEventListener('portfolio:open-project', onOpen)
+    return () => window.removeEventListener('portfolio:open-project', onOpen)
+  }, [])
 
   const sortedProjects = useMemo(
     () => [...projects].sort((a, b) => a.order - b.order),
@@ -56,7 +66,6 @@ export function Projects() {
       healthcare: 0,
       edtech: 0,
       streaming: 0,
-      mobile: 0,
     }
     sortedProjects.forEach((p) => {
       base[p.industry as FilterValue] += 1
@@ -68,6 +77,11 @@ export function Projects() {
     setOpenId((current) => (current === id ? null : id))
   }
 
+  const handleFilterChange = (next: FilterValue) => {
+    setFilter(next)
+    setOpenId(null)
+  }
+
   return (
     <section
       id="projects"
@@ -77,12 +91,12 @@ export function Projects() {
       <div className="container-portfolio">
         <SectionHeader
           eyebrow="Project Showcase"
-          title="Six products. Two industries. One QA practice."
+          title="Six products. Three industries. One QA practice."
           description="WebEVV is where my deepest work lives — healthcare SaaS testing plus my active Playwright automation learning. Filter by industry, or expand any card for the full case study."
         />
 
         <ScrollReveal>
-          <FilterBar active={filter} onChange={setFilter} counts={counts} />
+          <FilterBar active={filter} onChange={handleFilterChange} counts={counts} />
         </ScrollReveal>
 
         <LayoutGroup>

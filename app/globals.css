@@ -69,6 +69,8 @@
     line-height: 1.75;
     /* Prevent horizontal scroll at all times */
     overflow-x: hidden;
+    /* Clear fixed StickyBar so Contact/Footer are not covered */
+    padding-bottom: calc(var(--sticky-bar-height) + env(safe-area-inset-bottom, 0px));
   }
 
   /* Focus visible — keyboard accessibility */

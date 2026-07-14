@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { heroContent } from '@/content/contact'
 import { SITE } from '@/lib/constants'
@@ -67,6 +68,7 @@ const HERO_VARIANTS = {
 // ─── Hero section ─────────────────────────────────────────────────────────────
 export function Hero() {
   const shouldReduceMotion = useReducedMotion()
+  const [photoFailed, setPhotoFailed] = useState(false)
   const h = heroContent
 
   return (
@@ -167,8 +169,6 @@ export function Hero() {
               <a
                 href={SITE.cvPath}
                 download={SITE.cvFilename}
-                target="_blank"
-                rel="noopener noreferrer"
                 className={cn(
                   'inline-flex items-center justify-center gap-2',
                   'h-12 px-6 rounded-md text-sm font-semibold',
@@ -249,20 +249,31 @@ export function Hero() {
                   'relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96',
                   'rounded-2xl overflow-hidden',
                   'border border-border-subtle',
-                  'bg-base-card' // fallback if photo not yet added
+                  'bg-base-card'
                 )}
               >
-                <Image
-                  src={SITE.photoPath}
-                  alt={h.photoAlt}
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 224px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
-                  className="object-cover object-top"
-                  onError={() => {
-                    // Photo not yet uploaded — placeholder renders via bg-base-card
-                  }}
-                />
+                {!photoFailed ? (
+                  <Image
+                    src={SITE.photoPath}
+                    alt={h.photoAlt}
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 224px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+                    className="object-cover object-center"
+                    onError={() => setPhotoFailed(true)}
+                  />
+                ) : (
+                  <div
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-2"
+                    role="img"
+                    aria-label={h.photoAlt}
+                  >
+                    <span className="font-display text-5xl sm:text-6xl font-semibold text-ink-primary tracking-tight">
+                      TS
+                    </span>
+                    <span className="w-10 h-0.5 rounded-full bg-accent" aria-hidden="true" />
+                  </div>
+                )}
 
                 {/* Overlay gradient at bottom of photo — blends into content */}
                 <div

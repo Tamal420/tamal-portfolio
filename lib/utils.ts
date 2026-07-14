@@ -68,7 +68,7 @@ export function prefersReducedMotion(): boolean {
 
 // ─── Project filter helpers ───────────────────────────────────────────────────
 
-export type FilterValue = 'all' | 'healthcare' | 'edtech' | 'streaming' | 'mobile'
+export type FilterValue = 'all' | 'healthcare' | 'edtech' | 'streaming'
 
 export function getFilterLabel(filter: FilterValue): string {
   const labels: Record<FilterValue, string> = {
@@ -76,7 +76,6 @@ export function getFilterLabel(filter: FilterValue): string {
     healthcare: 'Healthcare SaaS',
     edtech: 'EdTech',
     streaming: 'Music Streaming',
-    mobile: 'Mobile Apps',
   }
   return labels[filter]
 }

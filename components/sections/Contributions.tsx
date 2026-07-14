@@ -12,7 +12,6 @@ const INDUSTRY_ICON: Record<string, string> = {
   'Healthcare SaaS': 'heart-rate-monitor',
   'EdTech': 'graduation-cap',
   'Music Streaming': 'music',
-  'Mobile Apps': 'device-mobile',
 }
 
 /**
@@ -37,8 +36,8 @@ export function Contributions() {
       <div className="container-portfolio">
         <SectionHeader
           eyebrow="Featured QA Contributions"
-          title="QA impact across six products, two industries"
-          description="From healthcare SaaS handling real patient visit records to EdTech platforms used by children — here's where my testing work has actually shipped."
+          title="QA impact across six products, three industries"
+          description="From healthcare SaaS handling real patient visit records to EdTech platforms and music streaming — here's where my testing work has actually shipped."
         />
 
         {/* ── Metric row ── */}
@@ -95,7 +94,12 @@ export function Contributions() {
           {projectContributions.map((project) => (
             <StaggerItem key={project.id}>
               <button
-                onClick={() => scrollToSection('#projects')}
+                onClick={() => {
+                  window.dispatchEvent(
+                    new CustomEvent('portfolio:open-project', { detail: project.id })
+                  )
+                  setTimeout(() => scrollToSection(`#project-${project.id}`), 100)
+                }}
                 className={cn(
                   'card-base rounded-xl p-5 text-left w-full h-full flex flex-col',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',

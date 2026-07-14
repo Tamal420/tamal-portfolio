@@ -11,7 +11,7 @@ interface FilterBarProps {
   counts: Record<FilterValue, number>
 }
 
-const FILTERS: FilterValue[] = ['all', 'healthcare', 'edtech', 'streaming', 'mobile']
+const FILTERS: FilterValue[] = ['all', 'healthcare', 'edtech', 'streaming']
 
 /**
  * Horizontal filter pill row for the Projects section.

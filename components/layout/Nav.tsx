@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS, SITE } from '@/lib/constants'
 import { useScrollSpy, useScrolled, useScrollProgress } from '@/hooks/useScrollSpy'
@@ -62,6 +62,16 @@ function MobileDrawer({
     return () => { document.body.style.overflow = '' }
   }, [open])
 
+  // Close on Escape
+  useEffect(() => {
+    if (!open) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [open, onClose])
+
   const handleNavClick = (href: string) => {
     onClose()
     setTimeout(() => scrollToSection(href), 300)
@@ -86,6 +96,7 @@ function MobileDrawer({
           {/* Drawer panel */}
           <motion.div
             key="drawer"
+            id="mobile-nav"
             className="fixed inset-x-0 top-0 z-50 flex flex-col bg-base-raised border-b border-border-subtle"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,8 +151,6 @@ function MobileDrawer({
               <LinkButton
                 href={SITE.cvPath}
                 download={SITE.cvFilename}
-                target="_blank"
-                rel="noopener noreferrer"
                 variant="accent"
                 size="lg"
                 className="w-full"
@@ -161,9 +170,19 @@ function MobileDrawer({
 // ─── Main Nav ─────────────────────────────────────────────────────────────────
 export function Nav() {
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const wasDrawerOpen = useRef(false)
   const scrolled = useScrolled(60)
   const progress = useScrollProgress()
   const activeId = useScrollSpy(SECTION_IDS)
+
+  // Return focus to hamburger when drawer closes
+  useEffect(() => {
+    if (wasDrawerOpen.current && !drawerOpen) {
+      menuButtonRef.current?.focus()
+    }
+    wasDrawerOpen.current = drawerOpen
+  }, [drawerOpen])
 
   const handleNavClick = (href: string) => {
     scrollToSection(href)
@@ -239,8 +258,6 @@ export function Nav() {
             <LinkButton
               href={SITE.cvPath}
               download={SITE.cvFilename}
-              target="_blank"
-              rel="noopener noreferrer"
               variant="accent"
               size="sm"
               leftIcon={<DownloadIcon />}
@@ -252,6 +269,7 @@ export function Nav() {
 
           {/* Mobile hamburger */}
           <button
+            ref={menuButtonRef}
             onClick={() => setDrawerOpen(true)}
             className="md:hidden flex items-center justify-center w-11 h-11 rounded-md text-ink-secondary hover:text-ink-primary hover:bg-base-elevated transition-colors"
             aria-label="Open navigation menu"

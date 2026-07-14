@@ -119,8 +119,6 @@ export function StickyBar() {
               <a
                 href={SITE.cvPath}
                 download={SITE.cvFilename}
-                target="_blank"
-                rel="noopener noreferrer"
                 className={cn(
                   'flex items-center gap-1.5',
                   'h-8 px-3 rounded text-xs font-medium',

@@ -9,22 +9,22 @@ export const SITE = {
   email: 'tamalsaha700.ts@gmail.com',
   github: 'https://github.com/Tamal420',
   githubDisplay: 'github.com/Tamal420',
-  cvPath: '/Tamal-Saha-QA-CV.pdf',
-  cvFilename: 'Tamal-Saha-QA-CV.pdf',
+  cvPath: '/Tamal_Saha_SQA_Resume.pdf',
+  cvFilename: 'Tamal_Saha_SQA_Resume.pdf',
   url: 'https://tamalsaha.dev',
   statusLabel: 'Open to new opportunities',
-  photoPath: '/photo.jpg', // Place your professional photo at public/photo.jpg
+  photoPath: '/portfolio_image.png',
 } as const
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
 export const NAV_LINKS = [
-  { label: 'About',      href: '#about',        ariaLabel: 'About Tamal Saha' },
-  { label: 'Skills',     href: '#skills',       ariaLabel: 'Skills and tools' },
   { label: 'Projects',   href: '#projects',     ariaLabel: 'Project showcase' },
   { label: 'Bugs',       href: '#bugs',         ariaLabel: 'Bug Hall of Fame' },
   { label: 'Lab',        href: '#lab',          ariaLabel: 'QA Thinking Lab' },
   { label: 'Automation', href: '#automation',   ariaLabel: 'Automation Journey' },
+  { label: 'Skills',     href: '#skills',       ariaLabel: 'Skills and tools' },
+  { label: 'About',      href: '#about',        ariaLabel: 'About Tamal Saha' },
   { label: 'Contact',    href: '#contact',      ariaLabel: 'Contact Tamal Saha' },
 ] as const
 
@@ -48,12 +48,6 @@ export const INDUSTRY_CONFIG = {
     bgClass: 'bg-[#0D0020]',
     textClass: 'text-[#A78BFA]',
     borderClass: 'border-[#4C1D95]',
-  },
-  mobile: {
-    label: 'Mobile Apps',
-    bgClass: 'bg-[#001828]',
-    textClass: 'text-[#3B82F6]',
-    borderClass: 'border-[#1A3A5A]',
   },
 } as const
 

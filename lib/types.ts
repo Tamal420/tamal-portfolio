@@ -1,6 +1,6 @@
 // ─── Project / Case Study ─────────────────────────────────────────────────────
 
-export type Industry = 'healthcare' | 'edtech' | 'streaming' | 'mobile'
+export type Industry = 'healthcare' | 'edtech' | 'streaming'
 export type Platform = 'web' | 'android' | 'ios' | 'api'
 export type ProjectFormat = 'deep' | 'compact'
 
