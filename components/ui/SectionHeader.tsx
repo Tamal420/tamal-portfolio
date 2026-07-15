@@ -35,7 +35,7 @@ export function SectionHeader({
       {description && (
         <p
           className={cn(
-            'mt-4 text-sm md:text-base text-ink-secondary leading-relaxed max-w-2xl',
+            'mt-4 text-sm md:text-[1rem] text-ink-secondary leading-relaxed max-w-2xl',
             align === 'center' && 'mx-auto'
           )}
         >

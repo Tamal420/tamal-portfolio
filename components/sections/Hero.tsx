@@ -152,7 +152,7 @@ export function Hero() {
               initial={shouldReduceMotion ? false : 'hidden'}
               animate="visible"
               variants={HERO_VARIANTS}
-              className="text-sm md:text-base text-ink-secondary leading-relaxed mb-8 max-w-lg"
+              className="text-sm md:text-[1rem] text-ink-secondary leading-relaxed mb-8 max-w-lg"
             >
               {h.contextLine}
             </motion.p>

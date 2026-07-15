@@ -46,12 +46,12 @@ export const aboutContent = {
   ],
   careerTimeline: [
     {
-      year: '2023',
+      year: '2025',
       title: 'Joined Kaz Software',
       description: 'Started as Associate SQA Engineer. First production project: WebEVV healthcare SaaS platform.',
     },
     {
-      year: '2024',
+      year: '2025–2026',
       title: 'Expanded to 6 projects',
       description: 'Delivered QA across healthcare SaaS, EdTech, and music streaming — adding API testing and cross-platform mobile coverage.',
     },
