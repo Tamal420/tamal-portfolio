@@ -7,6 +7,7 @@ import { heroContent } from '@/content/contact'
 import { SITE } from '@/lib/constants'
 import { scrollToSection } from '@/lib/utils'
 import { cn } from '@/lib/utils'
+import { Button, LinkButton } from '@/components/ui/Button'
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 function DownloadIcon() {
@@ -42,7 +43,7 @@ function PlatformBadge({ label }: { label: string }) {
     <span
       className={cn(
         'inline-flex items-center h-6 px-2.5 rounded text-[11px] font-medium',
-        'bg-base-card border border-border-subtle text-ink-tertiary',
+        'bg-base-card border border-border-subtle text-ink-secondary',
         'whitespace-nowrap'
       )}
     >
@@ -92,12 +93,12 @@ export function Hero() {
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
           {/* ── Content column ── */}
-          <div className="flex flex-col order-2 md:order-1">
+          <div className="flex flex-col order-2 md:order-1 min-w-0">
 
             {/* Status pill */}
             <motion.div
               custom={0}
-              initial={shouldReduceMotion ? false : 'hidden'}
+              initial={false}
               animate="visible"
               variants={HERO_VARIANTS}
               className="mb-5"
@@ -114,34 +115,34 @@ export function Hero() {
             {/* Name */}
             <motion.h1
               custom={0.1}
-              initial={shouldReduceMotion ? false : 'hidden'}
+              initial={false}
               animate="visible"
               variants={HERO_VARIANTS}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ink-primary tracking-tight leading-none mb-2"
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-ink-primary tracking-tight leading-tight mb-2 break-words"
             >
               {h.name}
             </motion.h1>
 
-            {/* Role + company */}
+            {/* Role + company — separator stays in the accessibility tree so text isn't "EngineerKaz" */}
             <motion.p
               custom={0.18}
-              initial={shouldReduceMotion ? false : 'hidden'}
+              initial={false}
               animate="visible"
               variants={HERO_VARIANTS}
-              className="text-sm font-medium text-ink-tertiary tracking-widest uppercase mb-6"
+              className="text-sm font-medium text-ink-tertiary tracking-widest uppercase mb-6 break-words"
             >
               {h.role}
-              <span className="mx-2 text-border-default" aria-hidden="true">·</span>
+              <span className="mx-2 text-border-default"> · </span>
               {h.company}
             </motion.p>
 
             {/* Hook sentence */}
             <motion.p
               custom={0.26}
-              initial={shouldReduceMotion ? false : 'hidden'}
+              initial={false}
               animate="visible"
               variants={HERO_VARIANTS}
-              className="text-xl sm:text-2xl font-semibold text-ink-primary leading-snug tracking-tight text-balance mb-4"
+              className="text-xl sm:text-2xl font-semibold text-ink-primary leading-snug tracking-tight text-balance mb-4 break-words"
             >
               {h.hookSentence}
             </motion.p>
@@ -149,68 +150,54 @@ export function Hero() {
             {/* Context line */}
             <motion.p
               custom={0.34}
-              initial={shouldReduceMotion ? false : 'hidden'}
+              initial={false}
               animate="visible"
               variants={HERO_VARIANTS}
-              className="text-sm md:text-[1rem] text-ink-secondary leading-relaxed mb-8 max-w-lg"
+              className="text-sm md:text-[1rem] text-ink-secondary leading-relaxed mb-8 max-w-lg break-words"
             >
               {h.contextLine}
             </motion.p>
 
-            {/* CTA buttons */}
+            {/* CTA buttons — shared Button tokens with Nav / StickyBar */}
             <motion.div
               custom={0.42}
-              initial={shouldReduceMotion ? false : 'hidden'}
+              initial={false}
               animate="visible"
               variants={HERO_VARIANTS}
               className="flex flex-col sm:flex-row gap-3 mb-8"
             >
-              {/* Primary: Download CV */}
-              <a
+              <LinkButton
                 href={SITE.cvPath}
                 download={SITE.cvFilename}
-                className={cn(
-                  'inline-flex items-center justify-center gap-2',
-                  'h-12 px-6 rounded-md text-sm font-semibold',
-                  'bg-ink-primary text-base',
-                  'hover:bg-ink-secondary active:scale-[0.98]',
-                  'transition-all duration-150',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base-raised',
-                  'w-full sm:w-auto'
-                )}
+                variant="accent"
+                size="lg"
+                className="w-full sm:w-auto font-semibold"
+                leftIcon={<DownloadIcon />}
                 aria-label="Download Tamal Saha's CV as a PDF"
               >
-                <DownloadIcon />
                 {h.cvLabel}
-              </a>
+              </LinkButton>
 
-              {/* Secondary: Get in touch */}
-              <button
+              <Button
+                type="button"
+                variant="ghost"
+                size="lg"
+                className="w-full sm:w-auto min-h-12 font-semibold"
+                rightIcon={<ArrowIcon />}
                 onClick={() => scrollToSection('#contact')}
-                className={cn(
-                  'inline-flex items-center justify-center gap-2',
-                  'h-12 px-6 rounded-md text-sm font-medium',
-                  'bg-transparent text-ink-primary',
-                  'border border-border-default',
-                  'hover:border-ink-tertiary hover:bg-base-elevated',
-                  'active:scale-[0.98] transition-all duration-150',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base-raised',
-                  'w-full sm:w-auto'
-                )}
                 aria-label="Navigate to contact section"
               >
                 {h.contactLabel}
-                <ArrowIcon />
-              </button>
+              </Button>
             </motion.div>
 
             {/* Platform badges */}
             <motion.div
               custom={0.5}
-              initial={shouldReduceMotion ? false : 'hidden'}
+              initial={false}
               animate="visible"
               variants={HERO_VARIANTS}
-              className="flex flex-wrap gap-2"
+              className="flex flex-wrap gap-2 pb-20 md:pb-0"
               aria-label="Testing platforms"
             >
               {h.platforms.map((platform) => (
@@ -223,7 +210,7 @@ export function Hero() {
           <div className="flex justify-center md:justify-end order-1 md:order-2">
             <motion.div
               custom={0.05}
-              initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
                 delay: 0.05,
@@ -315,7 +302,7 @@ export function Hero() {
           'text-ink-tertiary hover:text-ink-secondary transition-colors',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded'
         )}
-        initial={shouldReduceMotion ? false : { opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.5 }}
         aria-label="Scroll down to Impact Wall"

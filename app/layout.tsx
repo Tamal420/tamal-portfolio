@@ -112,6 +112,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans bg-base text-ink-primary antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <noscript>
+          <div
+            role="status"
+            className="bg-base-raised border-b border-border-subtle px-6 py-4 text-center text-sm text-ink-secondary"
+          >
+            JavaScript is disabled. Portfolio content is still available below.
+            For the best experience, enable JavaScript.
+          </div>
+        </noscript>
         {children}
       </body>
     </html>

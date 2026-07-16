@@ -50,9 +50,9 @@ export function AutomationJourney() {
           <div className="flex flex-col gap-6">
             <ScrollReveal delay={0.1}>
               <div>
-                <h4 className="text-[11px] uppercase tracking-widest font-semibold text-ink-tertiary mb-3">
+                <h3 className="text-[11px] uppercase tracking-widest font-semibold text-ink-tertiary mb-3">
                   Applying Playwright + Python to WebEVV
-                </h4>
+                </h3>
                 <CodeBlock
                   code={codeSnippet}
                   language={codeLanguage}

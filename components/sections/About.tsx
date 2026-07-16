@@ -29,10 +29,10 @@ export function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
           {/* Narrative — primary column */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
+          <div className="lg:col-span-2 flex flex-col gap-5 min-w-0">
             {aboutContent.paragraphs.map((paragraph, i) => (
               <ScrollReveal key={i} delay={i * 0.05}>
-                <p className="text-sm sm:text-base text-ink-secondary leading-relaxed">
+                <p className="text-sm sm:text-[1rem] text-ink-secondary leading-relaxed break-words">
                   {paragraph}
                 </p>
               </ScrollReveal>

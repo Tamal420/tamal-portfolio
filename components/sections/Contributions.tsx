@@ -59,7 +59,7 @@ export function Contributions() {
         </div>
 
         {/* ── Highlight cards ── */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14 md:mb-20">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14 md:mb-20">
           {contributionHighlights.map((highlight) => (
             <StaggerItem key={highlight.id}>
               <div className="card-base rounded-xl p-5 sm:p-6 h-full flex flex-col">
@@ -69,12 +69,19 @@ export function Contributions() {
                 >
                   <Icon name={highlight.icon} size={18} />
                 </div>
-                <h3 className="text-sm font-semibold text-ink-primary mb-2">
+                <h3 className="text-sm font-semibold text-ink-primary mb-3">
                   {highlight.title}
                 </h3>
-                <p className="text-sm text-ink-secondary leading-relaxed">
-                  {highlight.description}
-                </p>
+                <div className="flex flex-col gap-3">
+                  {highlight.paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="text-sm text-ink-secondary leading-relaxed"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
             </StaggerItem>
           ))}
@@ -88,7 +95,7 @@ export function Contributions() {
         </ScrollReveal>
 
         <StaggerContainer
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
           staggerDelay={0.06}
         >
           {projectContributions.map((project) => (
@@ -133,7 +140,7 @@ export function Contributions() {
                 </div>
 
                 {/* Project name */}
-                <h4 className="text-base font-semibold text-ink-primary mb-2">
+                <h4 className="text-[1rem] font-semibold text-ink-primary mb-2">
                   {project.name}
                 </h4>
 

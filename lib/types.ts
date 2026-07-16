@@ -107,7 +107,7 @@ export interface ContributionHighlight {
   id: string
   icon: string                 // icon name string — rendered by Icon component
   title: string
-  description: string
+  paragraphs: string[]
 }
 
 // ─── Navigation ───────────────────────────────────────────────────────────────
@@ -115,7 +115,6 @@ export interface ContributionHighlight {
 export interface NavLink {
   label: string
   href: string                 // anchor id e.g. "#projects"
-  ariaLabel?: string
 }
 
 // ─── Contact ──────────────────────────────────────────────────────────────────

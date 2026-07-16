@@ -15,7 +15,7 @@ export function PlatformBadge({ platform }: PlatformBadgeProps) {
 
   return (
     <span
-      className="inline-flex items-center gap-1 h-6 px-2 rounded text-[11px] font-medium bg-base border border-border-subtle text-ink-tertiary"
+      className="inline-flex items-center gap-1 h-6 px-2 rounded text-[11px] font-medium bg-base border border-border-subtle text-ink-secondary"
       title={config.label}
     >
       <Icon name={config.icon} size={11} />

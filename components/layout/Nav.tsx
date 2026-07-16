@@ -6,7 +6,7 @@ import { NAV_LINKS, SITE } from '@/lib/constants'
 import { useScrollSpy, useScrolled, useScrollProgress } from '@/hooks/useScrollSpy'
 import { scrollToSection } from '@/lib/utils'
 import { cn } from '@/lib/utils'
-import { LinkButton } from '@/components/ui/Button'
+import { Button, LinkButton } from '@/components/ui/Button'
 
 // Section ids for scroll spy (without #)
 const SECTION_IDS = NAV_LINKS.map((l) => l.href.replace('#', ''))
@@ -129,7 +129,7 @@ function MobileDrawer({
                     key={link.href}
                     onClick={() => handleNavClick(link.href)}
                     className={cn(
-                      'flex items-center h-14 px-4 rounded-md text-base font-medium transition-colors text-left',
+                      'flex items-center h-14 px-4 rounded-md text-[1rem] font-medium transition-colors text-left',
                       isActive
                         ? 'text-accent bg-accent-surface'
                         : 'text-ink-secondary hover:text-ink-primary hover:bg-base-elevated'
@@ -137,7 +137,6 @@ function MobileDrawer({
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.04, duration: 0.25 }}
-                    aria-label={link.ariaLabel}
                     aria-current={isActive ? 'page' : undefined}
                   >
                     {link.label}
@@ -236,7 +235,6 @@ export function Nav() {
                       ? 'text-ink-primary'
                       : 'text-ink-tertiary hover:text-ink-secondary'
                   )}
-                  aria-label={link.ariaLabel}
                   aria-current={isActive ? 'page' : undefined}
                 >
                   {link.label}
@@ -253,18 +251,17 @@ export function Nav() {
             })}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA — secondary contact action; hero owns primary Download CV */}
           <div className="hidden md:flex items-center">
-            <LinkButton
-              href={SITE.cvPath}
-              download={SITE.cvFilename}
-              variant="accent"
+            <Button
+              type="button"
+              variant="ghost"
               size="sm"
-              leftIcon={<DownloadIcon />}
-              aria-label="Download Tamal Saha's CV as PDF"
+              onClick={() => handleNavClick('#contact')}
+              aria-label="Navigate to contact section"
             >
-              Download CV
-            </LinkButton>
+              Get in touch
+            </Button>
           </div>
 
           {/* Mobile hamburger */}
@@ -276,6 +273,7 @@ export function Nav() {
             aria-expanded={drawerOpen}
             aria-controls="mobile-nav"
           >
+            <span className="sr-only">Open navigation menu</span>
             <MenuIcon open={false} />
           </button>
         </div>

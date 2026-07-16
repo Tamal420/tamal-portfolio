@@ -66,7 +66,7 @@ export function ProjectCard({ project, isOpen, onToggle }: ProjectCardProps) {
             </span>
 
             {isFeatured && (
-              <span className="inline-flex items-center h-6 px-2.5 rounded-full text-[11px] font-semibold bg-accent text-base">
+              <span className="inline-flex items-center h-6 px-2.5 rounded-full text-[11px] font-semibold bg-accent text-[#0A0A0A]">
                 Featured Project
               </span>
             )}
@@ -96,7 +96,7 @@ export function ProjectCard({ project, isOpen, onToggle }: ProjectCardProps) {
         <p
           className={cn(
             'text-ink-secondary leading-relaxed mb-4',
-            isFeatured ? 'text-sm sm:text-base max-w-2xl' : 'text-sm'
+            isFeatured ? 'text-sm sm:text-[1rem] max-w-2xl' : 'text-sm'
           )}
         >
           {project.tagline}
@@ -111,7 +111,7 @@ export function ProjectCard({ project, isOpen, onToggle }: ProjectCardProps) {
 
         {/* Collapsed-state hint */}
         {!isOpen && (
-          <p className="text-xs text-ink-tertiary mt-3 flex items-center gap-1">
+          <p className="text-xs text-ink-secondary mt-3 flex items-center gap-1">
             View full case study
             <Icon name="arrow-right" size={12} />
           </p>

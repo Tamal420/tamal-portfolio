@@ -20,6 +20,8 @@ const config: Config = {
       // ─── Color system ─────────────────────────────────────────────
       colors: {
         // Base surfaces
+        // NOTE: never use Tailwind `text-base` / `sm:text-base` for font size —
+        // the `base` color token collides and paints text as #0A0A0A. Use text-[1rem].
         base: {
           DEFAULT: '#0A0A0A', // page background
           raised: '#111111', // hero + contact bookends
@@ -37,7 +39,7 @@ const config: Config = {
         ink: {
           primary: '#FAFAFA',
           secondary: '#A1A1A1',
-          tertiary: '#5A5A5A',
+          tertiary: '#8A8A8A',
         },
 
         // Accent — signal green (one accent only)

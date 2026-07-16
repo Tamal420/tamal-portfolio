@@ -1,17 +1,43 @@
+import dynamic from 'next/dynamic'
 import { Nav } from '@/components/layout/Nav'
 import { StickyBar } from '@/components/layout/StickyBar'
 import { Footer } from '@/components/layout/Footer'
-
 import { Hero } from '@/components/sections/Hero'
-import { ImpactWall } from '@/components/sections/ImpactWall'
-import { Contributions } from '@/components/sections/Contributions'
-import { Projects } from '@/components/sections/Projects'
-import { BugHallOfFame } from '@/components/sections/BugHallOfFame'
-import { QAThinkingLab } from '@/components/sections/QAThinkingLab'
-import { AutomationJourney } from '@/components/sections/AutomationJourney'
-import { Skills } from '@/components/sections/Skills'
-import { About } from '@/components/sections/About'
-import { Contact } from '@/components/sections/Contact'
+
+/**
+ * Below-fold sections are code-split so the initial JS payload stays
+ * closer to Hero + chrome. SSR stays on — HTML still ships for SEO;
+ * only the client bundles are deferred into separate chunks.
+ */
+const ImpactWall = dynamic(() =>
+  import('@/components/sections/ImpactWall').then((m) => ({ default: m.ImpactWall }))
+)
+const Contributions = dynamic(() =>
+  import('@/components/sections/Contributions').then((m) => ({ default: m.Contributions }))
+)
+const Projects = dynamic(() =>
+  import('@/components/sections/Projects').then((m) => ({ default: m.Projects }))
+)
+const BugHallOfFame = dynamic(() =>
+  import('@/components/sections/BugHallOfFame').then((m) => ({ default: m.BugHallOfFame }))
+)
+const QAThinkingLab = dynamic(() =>
+  import('@/components/sections/QAThinkingLab').then((m) => ({ default: m.QAThinkingLab }))
+)
+const AutomationJourney = dynamic(() =>
+  import('@/components/sections/AutomationJourney').then((m) => ({
+    default: m.AutomationJourney,
+  }))
+)
+const Skills = dynamic(() =>
+  import('@/components/sections/Skills').then((m) => ({ default: m.Skills }))
+)
+const About = dynamic(() =>
+  import('@/components/sections/About').then((m) => ({ default: m.About }))
+)
+const Contact = dynamic(() =>
+  import('@/components/sections/Contact').then((m) => ({ default: m.Contact }))
+)
 
 /**
  * Home page — full section assembly.
@@ -37,7 +63,7 @@ export default function Home() {
     <>
       <Nav />
 
-      <main>
+      <main id="main-content" aria-label="Portfolio content">
         <Hero />
         <ImpactWall />
         <Contributions />

@@ -13,18 +13,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  // Dark fill — primary actions
+  // Light fill — highest-emphasis actions on dark surfaces
   primary:
-    'bg-ink-primary text-base hover:bg-ink-secondary active:scale-[0.98] border border-transparent',
-  // Transparent with border — secondary actions
+    'bg-ink-primary text-[#0A0A0A] hover:bg-ink-secondary active:scale-[0.98] border border-transparent',
+  // Outline secondary — strong enough border/text to read as a control on dark bg
   ghost:
-    'bg-transparent text-ink-primary border border-border-default hover:border-border-default hover:bg-base-elevated active:scale-[0.98]',
-  // Accent green outline — open to work, status-level actions
+    'bg-base-card text-ink-primary border border-ink-tertiary hover:border-ink-secondary hover:bg-base-elevated active:scale-[0.98]',
+  // Accent green — CV / status-level actions
   accent:
     'bg-accent-surface text-accent border border-accent-muted hover:bg-[#002A1A] active:scale-[0.98]',
-  // Minimal outline
+  // Quiet outline — tertiary actions
   outline:
-    'bg-transparent text-ink-secondary border border-border-subtle hover:border-border-default hover:text-ink-primary active:scale-[0.98]',
+    'bg-transparent text-ink-secondary border border-border-default hover:border-ink-tertiary hover:text-ink-primary hover:bg-base-elevated active:scale-[0.98]',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {

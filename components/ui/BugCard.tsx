@@ -41,9 +41,9 @@ export function BugCard({ bug }: BugCardProps) {
       </div>
 
       {/* Title */}
-      <h4 className="text-sm font-semibold text-ink-primary leading-snug mb-2">
+      <h3 className="text-sm font-semibold text-ink-primary leading-snug mb-2">
         {bug.title}
-      </h4>
+      </h3>
 
       {/* Description */}
       <p className="text-xs text-ink-secondary leading-relaxed mb-3 flex-1">

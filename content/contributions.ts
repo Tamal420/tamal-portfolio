@@ -1,4 +1,4 @@
-import type { MetricCard, ContributionHighlight } from '@/lib/types'
+﻿import type { MetricCard, ContributionHighlight } from '@/lib/types'
 import { projects } from '@/content/projects'
 import { INDUSTRY_CONFIG } from '@/lib/constants'
 
@@ -27,39 +27,54 @@ export const contributionHighlights: ContributionHighlight[] = [
     id: 'healthcare',
     icon: 'heart-rate-monitor',
     title: 'Healthcare SaaS testing',
-    description:
-      'QA across EVV platforms managing patient authorizations, caregiver scheduling, billing, and invoicing — software where financial and care data accuracy are operationally critical. RBAC validation, billing verification, and authorization workflow testing across two healthcare SaaS products.',
+    paragraphs: [
+      'QA across EVV platforms managing patient authorizations, caregiver scheduling, billing, and invoicing — software where financial and care data accuracy are operationally critical.',
+      'RBAC validation, billing verification, and authorization workflow testing across two healthcare SaaS products.',
+    ],
   },
   {
     id: 'api',
     icon: 'api',
     title: 'API and DevTools validation',
-    description:
-      'REST API testing using Postman and Swagger combined with Chrome DevTools-based API monitoring during live test execution. Validating request and response structures, status codes, and frontend-backend integration across healthcare, education, and music streaming platforms.',
+    paragraphs: [
+      'REST API testing using Postman and Swagger combined with Chrome DevTools-based API monitoring during live test execution.',
+      'Validating request and response structures, status codes, and frontend-backend integration across healthcare, education, and music streaming platforms.',
+    ],
   },
   {
     id: 'mobile',
     icon: 'device-mobile',
     title: 'Cross-platform mobile coverage',
-    description:
-      'Android and iOS testing across real devices and BrowserStack cloud configurations. Functional, regression, and compatibility coverage across mobile products in healthcare, music streaming, and education — verifying consistent behaviour across OS versions and device types.',
+    paragraphs: [
+      'Android and iOS testing across real devices and BrowserStack cloud configurations.',
+      'Functional, regression, and compatibility coverage across mobile products in healthcare, music streaming, and education — verifying consistent behaviour across OS versions and device types.',
+    ],
   },
 ]
 
 export const impactStatements = [
   {
     id: 'impact-01',
-    text: 'Delivered end-to-end QA coverage on WebEVV and ExpertEVV — healthcare SaaS platforms managing caregiver scheduling, patient authorizations, billing, and invoicing — across web, Android, and REST API layers within the same release cycle.',
+    paragraphs: [
+      'Delivered end-to-end QA coverage on WebEVV and ExpertEVV — healthcare SaaS platforms managing caregiver scheduling, patient authorizations, billing, and invoicing.',
+      'Coverage spanned web, Android, and REST API layers within the same release cycle.',
+    ],
     context: 'WebEVV · ExpertEVV · Healthcare SaaS · Web, Android, REST API · Kaz Software',
   },
   {
     id: 'impact-02',
-    text: 'Tested six products across healthcare, education, and music streaming — covering web applications, Android apps, iOS apps, and REST APIs — applying RBAC testing, authorization workflow validation, billing verification, and cross-browser compatibility checks within a single professional year.',
+    paragraphs: [
+      'Tested six products across healthcare, education, and music streaming — covering web applications, Android apps, iOS apps, and REST APIs.',
+      'Applied RBAC testing, authorization workflow validation, billing verification, and cross-browser compatibility checks within a single professional year.',
+    ],
     context: '6 projects · Healthcare SaaS + EdTech + Music Streaming · Web + Android + iOS + API',
   },
   {
     id: 'impact-03',
-    text: 'Actively learning Playwright with Python and applying automation concepts to WebEVV business workflows — building toward automation capability while continuing to deliver manual and API testing coverage across live SaaS products.',
+    paragraphs: [
+      'Actively learning Playwright with Python and applying automation concepts to WebEVV business workflows.',
+      'Building toward automation capability while continuing to deliver manual and API testing coverage across live SaaS products.',
+    ],
     context: 'Playwright · Python · WebEVV · Active learning journey · Kaz Software',
   },
 ]

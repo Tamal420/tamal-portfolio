@@ -19,13 +19,13 @@ export const SITE = {
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
 export const NAV_LINKS = [
-  { label: 'Projects',   href: '#projects',     ariaLabel: 'Project showcase' },
-  { label: 'Bugs',       href: '#bugs',         ariaLabel: 'Bug Hall of Fame' },
-  { label: 'Lab',        href: '#lab',          ariaLabel: 'QA Thinking Lab' },
-  { label: 'Automation', href: '#automation',   ariaLabel: 'Automation Journey' },
-  { label: 'Skills',     href: '#skills',       ariaLabel: 'Skills and tools' },
-  { label: 'About',      href: '#about',        ariaLabel: 'About Tamal Saha' },
-  { label: 'Contact',    href: '#contact',      ariaLabel: 'Contact Tamal Saha' },
+  { label: 'Projects',   href: '#projects' },
+  { label: 'Bugs',       href: '#bugs' },
+  { label: 'Lab',        href: '#lab' },
+  { label: 'Automation', href: '#automation' },
+  { label: 'Skills',     href: '#skills' },
+  { label: 'About',      href: '#about' },
+  { label: 'Contact',    href: '#contact' },
 ] as const
 
 // ─── Industry display config ──────────────────────────────────────────────────

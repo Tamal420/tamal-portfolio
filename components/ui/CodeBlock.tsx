@@ -26,7 +26,12 @@ export function CodeBlock({ code, language = 'python', caption }: CodeBlockProps
       </div>
 
       {/* Code content */}
-      <pre className="p-4 overflow-x-auto text-[12px] sm:text-[13px] leading-[1.7] font-mono">
+      <pre
+        className="p-4 overflow-x-auto text-[12px] sm:text-[13px] leading-[1.7] font-mono"
+        tabIndex={0}
+        role="region"
+        aria-label={`${language} code example`}
+      >
         <code className="text-ink-secondary whitespace-pre">{highlight(code)}</code>
       </pre>
 

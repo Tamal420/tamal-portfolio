@@ -5,7 +5,7 @@ import { SITE } from '@/lib/constants'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { Icon } from '@/components/ui/Icon'
-import { cn } from '@/lib/utils'
+import { LinkButton } from '@/components/ui/Button'
 
 function DownloadIcon() {
   return (
@@ -119,23 +119,19 @@ export function Contact() {
           </ScrollReveal>
         </div>
 
-        {/* CV download — primary CTA */}
+        {/* CV download — same accent CTA as Nav / Hero / StickyBar */}
         <ScrollReveal delay={0.18}>
-          <a
+          <LinkButton
             href={contactContent.cvPath}
             download={SITE.cvFilename}
-            className={cn(
-              'inline-flex items-center justify-center gap-2 w-full sm:w-auto',
-              'h-12 px-6 rounded-md text-sm font-semibold',
-              'bg-ink-primary text-base hover:bg-ink-secondary',
-              'active:scale-[0.98] transition-all duration-150',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base-raised'
-            )}
+            variant="accent"
+            size="lg"
+            className="w-full sm:w-auto font-semibold"
+            leftIcon={<DownloadIcon />}
             aria-label="Download Tamal Saha's CV as a PDF"
           >
-            <DownloadIcon />
             {contactContent.cvLabel}
-          </a>
+          </LinkButton>
         </ScrollReveal>
       </div>
     </section>

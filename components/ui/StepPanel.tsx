@@ -34,7 +34,7 @@ export function StepPanel({ step, stepNumber, totalSteps }: StepPanelProps) {
         <h4 className="text-lg sm:text-xl font-semibold text-ink-primary mt-2 mb-3 tracking-tight">
           {step.title}
         </h4>
-        <p className="text-sm sm:text-base text-ink-secondary leading-relaxed">
+        <p className="text-sm sm:text-[1rem] text-ink-secondary leading-relaxed">
           {step.body}
         </p>
       </motion.div>

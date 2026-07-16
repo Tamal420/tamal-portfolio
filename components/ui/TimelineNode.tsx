@@ -54,9 +54,9 @@ export function TimelineNode({ node, isLast, delay = 0 }: TimelineNodeProps) {
       {/* Content */}
       <div className={cn('flex-1 pb-10', isLast && 'pb-0')}>
         <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-          <h4 className="text-sm sm:text-base font-semibold text-ink-primary">
+          <h3 className="text-sm sm:text-[1rem] font-semibold text-ink-primary">
             {node.title}
-          </h4>
+          </h3>
           {node.status === 'active' && (
             <span className="inline-flex items-center h-5 px-2 rounded-full text-[10px] font-semibold bg-high-bg text-high-text border border-high-border">
               In progress
