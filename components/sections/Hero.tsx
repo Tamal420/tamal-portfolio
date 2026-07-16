@@ -38,12 +38,13 @@ function ChevronDownIcon() {
 }
 
 // ─── Platform badge ───────────────────────────────────────────────────────────
+// Non-interactive labels (not buttons) — sized for readability, not 44px hit targets.
 function PlatformBadge({ label }: { label: string }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center h-6 px-2.5 rounded text-[11px] font-medium',
-        'bg-base-card border border-border-subtle text-ink-secondary',
+        'inline-flex items-center min-h-9 h-9 px-3.5 rounded-md text-xs font-medium',
+        'bg-base-card border border-border-default text-ink-primary',
         'whitespace-nowrap'
       )}
     >

@@ -233,7 +233,7 @@ export function Nav() {
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                     isActive
                       ? 'text-ink-primary'
-                      : 'text-ink-tertiary hover:text-ink-secondary'
+                      : 'text-ink-secondary hover:text-ink-primary'
                   )}
                   aria-current={isActive ? 'page' : undefined}
                 >
