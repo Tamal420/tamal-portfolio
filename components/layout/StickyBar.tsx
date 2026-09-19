@@ -73,7 +73,7 @@ export function StickyBar() {
         >
           <div className="container-portfolio h-12 flex items-center justify-between gap-4">
 
-            {/* Left: status + location */}
+            {/* Left: availability status */}
             <div className="flex items-center gap-3 min-w-0">
               {/* Status dot */}
               <div className="flex items-center gap-1.5 shrink-0">
@@ -86,13 +86,6 @@ export function StickyBar() {
                 </span>
               </div>
 
-              {/* Divider */}
-              <span className="text-border-default text-xs hidden sm:block" aria-hidden="true">·</span>
-
-              {/* Location */}
-              <span className="text-xs text-ink-tertiary hidden sm:block truncate">
-                {stickyBar.location}
-              </span>
             </div>
 
             {/* Right: actions */}

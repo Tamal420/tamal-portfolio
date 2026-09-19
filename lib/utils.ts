@@ -9,13 +9,27 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // ─── Smooth scroll to section ─────────────────────────────────────────────────
+// Uses explicit scroll position + html scroll-padding offset so the fixed nav
+// never covers section headings.
+
+function getScrollOffset(): number {
+  if (typeof window === 'undefined') return 80
+  const paddingTop = parseFloat(
+    getComputedStyle(document.documentElement).scrollPaddingTop
+  )
+  return Number.isFinite(paddingTop) && paddingTop > 0 ? paddingTop : 80
+}
 
 export function scrollToSection(href: string) {
   const id = href.replace('#', '')
   const el = document.getElementById(id)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  if (!el) return
+
+  const offset = getScrollOffset()
+  const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - offset)
+  const behavior = prefersReducedMotion() ? 'auto' : 'smooth'
+
+  window.scrollTo({ top, behavior })
 }
 
 // ─── Download CV ──────────────────────────────────────────────────────────────

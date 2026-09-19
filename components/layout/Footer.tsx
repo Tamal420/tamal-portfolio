@@ -38,17 +38,8 @@ export function Footer() {
             ))}
           </nav>
 
-          {/* GitHub + copyright */}
+          {/* Copyright */}
           <div className="flex flex-col sm:items-end gap-1">
-            <a
-              href={SITE.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-ink-secondary hover:text-ink-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
-              aria-label="View GitHub profile (opens in a new tab)"
-            >
-              {SITE.githubDisplay}
-            </a>
             <p className="text-[11px] text-ink-tertiary">
               © {year} {SITE.name}. Built with care.
             </p>

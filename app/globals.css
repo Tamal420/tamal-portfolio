@@ -61,6 +61,11 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Anchor targets (footer links) align with the same offset as scrollToSection */
+  section[id] {
+    scroll-margin-top: calc(var(--nav-height) + 16px);
+  }
+
   body {
     background-color: var(--bg-base);
     color: var(--ink-primary);

@@ -6,44 +6,59 @@ import { useState, useEffect, useRef } from 'react'
  * Detects which section is currently visible in the viewport.
  * Returns the id of the active section (without the # prefix).
  * Used by Nav to highlight the current section link.
+ *
+ * Uses scroll position (not IntersectionObserver) so programmatic
+ * scrollToSection and manual scroll stay in sync with the nav highlight.
  */
 export function useScrollSpy(sectionIds: string[], offset = 80): string {
   const [activeId, setActiveId] = useState<string>('')
-  const observer = useRef<IntersectionObserver | null>(null)
+  const sectionIdsRef = useRef(sectionIds)
+  sectionIdsRef.current = sectionIds
 
   useEffect(() => {
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[]
+    if (sectionIds.length === 0) return
 
-    if (observer.current) {
-      observer.current.disconnect()
+    let rafId = 0
+
+    const updateActive = () => {
+      rafId = 0
+      const reference = window.scrollY + offset
+      let next = ''
+
+      for (const id of sectionIdsRef.current) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const top = el.getBoundingClientRect().top + window.scrollY
+        if (top <= reference + 1) {
+          next = id
+        }
+      }
+
+      const isAtDocumentEnd =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight - 1
+      if (isAtDocumentEnd) {
+        next = sectionIdsRef.current[sectionIdsRef.current.length - 1] ?? next
+      }
+
+      setActiveId((prev) => (prev === next ? prev : next))
     }
 
-    observer.current = new IntersectionObserver(
-      (entries) => {
-        // Find the topmost visible section
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => {
-            const aTop = a.boundingClientRect.top
-            const bTop = b.boundingClientRect.top
-            return Math.abs(aTop) - Math.abs(bTop)
-          })
-
-        if (visible.length > 0) {
-          setActiveId(visible[0].target.id)
-        }
-      },
-      {
-        rootMargin: `-${offset}px 0px -50% 0px`,
-        threshold: 0,
+    const scheduleUpdate = () => {
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateActive)
       }
-    )
+    }
 
-    elements.forEach((el) => observer.current?.observe(el))
+    updateActive()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate, { passive: true })
 
-    return () => observer.current?.disconnect()
+    return () => {
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
   }, [sectionIds, offset])
 
   return activeId

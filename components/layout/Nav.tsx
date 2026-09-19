@@ -47,10 +47,12 @@ function MobileDrawer({
   open,
   onClose,
   activeId,
+  onNavigate,
 }: {
   open: boolean
   onClose: () => void
   activeId: string
+  onNavigate: (href: string, delay?: number) => void
 }) {
   // Lock body scroll when drawer is open
   useEffect(() => {
@@ -74,7 +76,7 @@ function MobileDrawer({
 
   const handleNavClick = (href: string) => {
     onClose()
-    setTimeout(() => scrollToSection(href), 300)
+    onNavigate(href, 300)
   }
 
   return (
@@ -169,11 +171,13 @@ function MobileDrawer({
 // ─── Main Nav ─────────────────────────────────────────────────────────────────
 export function Nav() {
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [pendingTargetId, setPendingTargetId] = useState<string | null>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const wasDrawerOpen = useRef(false)
   const scrolled = useScrolled(60)
   const progress = useScrollProgress()
   const activeId = useScrollSpy(SECTION_IDS)
+  const displayedActiveId = pendingTargetId ?? activeId
 
   // Return focus to hamburger when drawer closes
   useEffect(() => {
@@ -183,7 +187,47 @@ export function Nav() {
     wasDrawerOpen.current = drawerOpen
   }, [drawerOpen])
 
-  const handleNavClick = (href: string) => {
+  // Scroll-spy confirming the intended section marks programmatic navigation complete.
+  useEffect(() => {
+    if (pendingTargetId && activeId === pendingTargetId) {
+      setPendingTargetId(null)
+    }
+  }, [activeId, pendingTargetId])
+
+  // Any direct scroll input hands active-state control back to scroll-spy.
+  useEffect(() => {
+    if (!pendingTargetId) return
+
+    const clearPendingTarget = () => setPendingTargetId(null)
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        [' ', 'ArrowDown', 'ArrowUp', 'End', 'Home', 'PageDown', 'PageUp'].includes(
+          event.key
+        )
+      ) {
+        clearPendingTarget()
+      }
+    }
+
+    window.addEventListener('wheel', clearPendingTarget, { passive: true })
+    window.addEventListener('touchstart', clearPendingTarget, { passive: true })
+    window.addEventListener('pointerdown', clearPendingTarget, { passive: true })
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('wheel', clearPendingTarget)
+      window.removeEventListener('touchstart', clearPendingTarget)
+      window.removeEventListener('pointerdown', clearPendingTarget)
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [pendingTargetId])
+
+  const handleNavClick = (href: string, delay = 0) => {
+    setPendingTargetId(href.replace('#', ''))
+    if (delay) {
+      setTimeout(() => scrollToSection(href), delay)
+      return
+    }
     scrollToSection(href)
   }
 
@@ -223,7 +267,7 @@ export function Nav() {
             aria-label="Main navigation"
           >
             {NAV_LINKS.map((link) => {
-              const isActive = activeId === link.href.replace('#', '')
+              const isActive = displayedActiveId === link.href.replace('#', '')
               return (
                 <button
                   key={link.href}
@@ -283,7 +327,8 @@ export function Nav() {
       <MobileDrawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        activeId={activeId}
+        activeId={displayedActiveId}
+        onNavigate={handleNavClick}
       />
     </>
   )
