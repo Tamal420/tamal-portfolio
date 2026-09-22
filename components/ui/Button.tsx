@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { forwardRef } from 'react'
 
-type ButtonVariant = 'primary' | 'ghost' | 'outline' | 'accent'
+type ButtonVariant = 'primary' | 'ghost' | 'outline'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,18 +13,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  // Light fill — highest-emphasis actions on dark surfaces
+  // Solid accent — single primary CTA throughout the portfolio
   primary:
-    'bg-ink-primary text-[#0A0A0A] hover:bg-ink-secondary active:scale-[0.98] border border-transparent',
-  // Outline secondary — strong enough border/text to read as a control on dark bg
+    'bg-accent text-ink-on-accent border border-transparent hover:bg-accent-muted active:scale-[0.98]',
+  // Neutral secondary — subtle surface fill
   ghost:
-    'bg-base-card text-ink-primary border border-ink-tertiary hover:border-ink-secondary hover:bg-base-elevated active:scale-[0.98]',
-  // Accent green — CV / status-level actions
-  accent:
-    'bg-accent-surface text-accent border border-accent-muted hover:bg-[#002A1A] active:scale-[0.98]',
-  // Quiet outline — tertiary actions
+    'bg-surface-card text-ink-primary border border-border-subtle hover:border-accent-muted hover:bg-base-elevated active:scale-[0.98]',
+  // Tertiary — transparent with accent on hover
   outline:
-    'bg-transparent text-ink-secondary border border-border-default hover:border-ink-tertiary hover:text-ink-primary hover:bg-base-elevated active:scale-[0.98]',
+    'bg-transparent text-ink-secondary border border-border-default hover:border-accent-muted hover:text-accent hover:bg-base-elevated active:scale-[0.98]',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {

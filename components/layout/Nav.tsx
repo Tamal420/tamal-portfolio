@@ -7,6 +7,7 @@ import { useScrollSpy, useScrolled, useScrollProgress } from '@/hooks/useScrollS
 import { scrollToSection } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 import { Button, LinkButton } from '@/components/ui/Button'
+import { AppearanceMenu } from '@/components/theme/AppearanceMenu'
 
 // Section ids for scroll spy (without #)
 const SECTION_IDS = NAV_LINKS.map((l) => l.href.replace('#', ''))
@@ -86,7 +87,7 @@ function MobileDrawer({
           {/* Backdrop */}
           <motion.div
             key="backdrop"
-            className="fixed inset-0 z-40 bg-black/60"
+            className="fixed inset-0 z-40 bg-overlay/60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -152,7 +153,7 @@ function MobileDrawer({
               <LinkButton
                 href={SITE.cvPath}
                 download={SITE.cvFilename}
-                variant="accent"
+                variant="primary"
                 size="lg"
                 className="w-full"
                 leftIcon={<DownloadIcon />}
@@ -276,8 +277,8 @@ export function Nav() {
                     'relative px-3 py-1.5 text-sm font-medium rounded transition-colors',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                     isActive
-                      ? 'text-ink-primary'
-                      : 'text-ink-secondary hover:text-ink-primary'
+                      ? 'text-accent'
+                      : 'text-ink-secondary hover:text-accent'
                   )}
                   aria-current={isActive ? 'page' : undefined}
                 >
@@ -295,11 +296,12 @@ export function Nav() {
             })}
           </nav>
 
-          {/* Desktop CTA — secondary contact action; hero owns primary Download CV */}
-          <div className="hidden md:flex items-center">
+          {/* Desktop CTA + appearance */}
+          <div className="hidden md:flex items-center gap-2">
+            <AppearanceMenu />
             <Button
               type="button"
-              variant="ghost"
+              variant="outline"
               size="sm"
               onClick={() => handleNavClick('#contact')}
               aria-label="Navigate to contact section"
@@ -308,18 +310,21 @@ export function Nav() {
             </Button>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            ref={menuButtonRef}
-            onClick={() => setDrawerOpen(true)}
-            className="md:hidden flex items-center justify-center w-11 h-11 rounded-md text-ink-secondary hover:text-ink-primary hover:bg-base-elevated transition-colors"
-            aria-label="Open navigation menu"
-            aria-expanded={drawerOpen}
-            aria-controls="mobile-nav"
-          >
-            <span className="sr-only">Open navigation menu</span>
-            <MenuIcon open={false} />
-          </button>
+          {/* Mobile: appearance + hamburger */}
+          <div className="md:hidden flex items-center gap-1">
+            <AppearanceMenu />
+            <button
+              ref={menuButtonRef}
+              onClick={() => setDrawerOpen(true)}
+              className="flex items-center justify-center w-11 h-11 rounded-md text-ink-secondary hover:text-ink-primary hover:bg-base-elevated transition-colors"
+              aria-label="Open navigation menu"
+              aria-expanded={drawerOpen}
+              aria-controls="mobile-nav"
+            >
+              <span className="sr-only">Open navigation menu</span>
+              <MenuIcon open={false} />
+            </button>
+          </div>
         </div>
       </header>
 

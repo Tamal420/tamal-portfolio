@@ -61,7 +61,7 @@ export function Contact() {
           <ScrollReveal delay={0}>
             <a
               href={`mailto:${contactContent.email}`}
-              className="card-base rounded-xl p-5 flex flex-col gap-3 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="card-base card-interactive rounded-xl p-5 flex flex-col gap-3 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               aria-label={`Email ${contactContent.email}`}
             >
               <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent-surface text-accent">
@@ -84,7 +84,7 @@ export function Contact() {
               href={contactContent.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="card-base rounded-xl p-5 flex flex-col gap-3 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="card-base card-interactive rounded-xl p-5 flex flex-col gap-3 h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               aria-label="View GitHub profile (opens in a new tab)"
             >
               <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent-surface text-accent">
@@ -124,7 +124,7 @@ export function Contact() {
           <LinkButton
             href={contactContent.cvPath}
             download={SITE.cvFilename}
-            variant="accent"
+            variant="primary"
             size="lg"
             className="w-full sm:w-auto font-semibold"
             leftIcon={<DownloadIcon />}

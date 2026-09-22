@@ -1,5 +1,7 @@
 'use client'
 
+const EMAIL = 'tamalsaha700.ts@gmail.com'
+
 export default function GlobalError({
   error,
   reset,
@@ -24,7 +26,7 @@ export default function GlobalError({
           padding: '1.5rem',
         }}
       >
-        <main aria-labelledby="global-error-heading">
+        <main role="alert" aria-labelledby="global-error-heading">
           <p
             style={{
               fontSize: '0.6875rem',
@@ -35,7 +37,7 @@ export default function GlobalError({
               marginBottom: '0.75rem',
             }}
           >
-            Error
+            Unable to load
           </p>
           <h1
             id="global-error-heading"
@@ -51,12 +53,13 @@ export default function GlobalError({
             style={{
               fontSize: '0.875rem',
               color: '#A1A1A1',
-              maxWidth: '24rem',
+              maxWidth: '28rem',
               margin: '0 0 2rem',
-              lineHeight: 1.5,
+              lineHeight: 1.55,
             }}
           >
-            The application failed to load. You can try again, or return to the
+            The application failed to load, so this page could not be shown.
+            Try again. If it keeps happening, email me or return to the
             homepage.
           </p>
           <div
@@ -71,6 +74,7 @@ export default function GlobalError({
               type="button"
               onClick={reset}
               style={{
+                minHeight: '2.75rem',
                 height: '2.75rem',
                 padding: '0 1.5rem',
                 borderRadius: '0.375rem',
@@ -85,15 +89,36 @@ export default function GlobalError({
               Try again
             </button>
             <a
+              href={`mailto:${EMAIL}?subject=${encodeURIComponent('Portfolio page failed to load')}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '2.75rem',
+                height: '2.75rem',
+                padding: '0 1.5rem',
+                borderRadius: '0.375rem',
+                border: '1px solid #00875A',
+                backgroundColor: '#001A0F',
+                color: '#00C278',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                textDecoration: 'none',
+              }}
+            >
+              Email Tamal
+            </a>
+            <a
               href="/"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                minHeight: '2.75rem',
                 height: '2.75rem',
                 padding: '0 1.5rem',
                 borderRadius: '0.375rem',
-                border: '1px solid #3A3A3A',
+                border: '1px solid #8A8A8A',
                 color: '#FAFAFA',
                 fontSize: '0.875rem',
                 fontWeight: 500,

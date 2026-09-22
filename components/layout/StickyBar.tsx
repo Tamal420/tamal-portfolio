@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SITE } from '@/lib/constants'
 import { contactContent } from '@/content/contact'
+import { LinkButton } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
 // ─── Download icon ────────────────────────────────────────────────────────────
@@ -60,7 +61,7 @@ export function StickyBar() {
           key="sticky-bar"
           className={cn(
             'fixed bottom-0 inset-x-0 z-40',
-            'bg-base-raised/90 backdrop-blur-[12px]',
+            'sticky-bar-surface backdrop-blur-[12px]',
             'border-t border-border-subtle',
             'pb-safe' // safe area for mobile home indicator
           )}
@@ -91,40 +92,29 @@ export function StickyBar() {
             {/* Right: actions */}
             <div className="flex items-center gap-2 shrink-0">
               {/* Email — hidden on smallest screens */}
-              <a
+              <LinkButton
                 href={`mailto:${SITE.email}`}
-                className={cn(
-                  'hidden sm:flex items-center gap-1.5',
-                  'h-8 px-3 rounded text-xs font-medium',
-                  'text-ink-secondary hover:text-ink-primary',
-                  'border border-border-subtle hover:border-border-default',
-                  'transition-colors duration-150',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent'
-                )}
+                variant="outline"
+                size="sm"
+                className="hidden sm:inline-flex"
+                leftIcon={<MailIcon />}
                 aria-label={`Email ${SITE.email}`}
               >
-                <MailIcon />
-                <span className="hidden lg:block">{stickyBar.emailLabel}</span>
+                <span className="hidden lg:inline">{stickyBar.emailLabel}</span>
                 <span className="lg:hidden">Email</span>
-              </a>
+              </LinkButton>
 
               {/* CV Download — always visible */}
-              <a
+              <LinkButton
                 href={SITE.cvPath}
                 download={SITE.cvFilename}
-                className={cn(
-                  'flex items-center gap-1.5',
-                  'h-8 px-3 rounded text-xs font-medium',
-                  'bg-accent-surface text-accent',
-                  'border border-accent-muted',
-                  'hover:bg-[#002A1A] transition-colors duration-150',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent'
-                )}
+                variant="primary"
+                size="sm"
+                leftIcon={<DownloadIcon />}
                 aria-label="Download Tamal Saha's CV as PDF"
               >
-                <DownloadIcon />
                 {stickyBar.cvLabel}
-              </a>
+              </LinkButton>
             </div>
           </div>
         </motion.div>

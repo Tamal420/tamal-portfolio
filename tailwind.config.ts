@@ -17,36 +17,42 @@ const config: Config = {
         mono: ['var(--font-geist-mono)', ...defaultTheme.fontFamily.mono],
       },
 
-      // ─── Color system ─────────────────────────────────────────────
+      // ─── Color system (CSS variables — theme + accent aware) ─────
       colors: {
-        // Base surfaces
         // NOTE: never use Tailwind `text-base` / `sm:text-base` for font size —
-        // the `base` color token collides and paints text as #0A0A0A. Use text-[1rem].
+        // the `base` color token collides and paints text as the surface color. Use text-[1rem].
         base: {
-          DEFAULT: '#0A0A0A', // page background
-          raised: '#111111', // hero + contact bookends
-          card: '#1A1A1A',   // card backgrounds, code blocks
-          elevated: '#242424', // hover states, expanded panels
+          DEFAULT: 'rgb(var(--bg-base-rgb) / <alpha-value>)',
+          raised: 'rgb(var(--bg-raised-rgb) / <alpha-value>)',
+          card: 'rgb(var(--bg-card-rgb) / <alpha-value>)',
+          elevated: 'rgb(var(--bg-elevated-rgb) / <alpha-value>)',
         },
 
-        // Borders
+        surface: {
+          card: 'rgb(var(--surface-card-rgb) / <alpha-value>)',
+          'card-hover': 'rgb(var(--surface-card-hover-rgb) / <alpha-value>)',
+        },
+
+        overlay: 'rgb(var(--bg-overlay-rgb) / <alpha-value>)',
+
         border: {
-          subtle: '#2E2E2E',
-          default: '#3A3A3A',
+          subtle: 'rgb(var(--border-subtle-rgb) / <alpha-value>)',
+          default: 'rgb(var(--border-default-rgb) / <alpha-value>)',
         },
 
-        // Text
         ink: {
-          primary: '#FAFAFA',
-          secondary: '#A1A1A1',
-          tertiary: '#8A8A8A',
+          primary: 'rgb(var(--ink-primary-rgb) / <alpha-value>)',
+          secondary: 'rgb(var(--ink-secondary-rgb) / <alpha-value>)',
+          tertiary: 'rgb(var(--ink-tertiary-rgb) / <alpha-value>)',
+          'on-primary': 'var(--ink-on-primary)',
+          'on-accent': 'var(--ink-on-accent)',
         },
 
-        // Accent — signal green (one accent only)
         accent: {
-          DEFAULT: '#00C278',
-          muted: '#00875A',
-          surface: '#001A0F',
+          DEFAULT: 'rgb(var(--accent-rgb) / <alpha-value>)',
+          muted: 'rgb(var(--accent-muted-rgb) / <alpha-value>)',
+          surface: 'rgb(var(--accent-surface-rgb) / <alpha-value>)',
+          hover: 'rgb(var(--accent-hover-rgb) / <alpha-value>)',
         },
 
         // Severity system (Bug Hall of Fame)
@@ -128,11 +134,12 @@ const config: Config = {
         'fade-up': 'fadeUp 0.4s ease-out forwards',
       },
 
-      // ─── Shadows ─────────────────────────────────────────────────
+      // ─── Shadows (theme-aware via CSS vars) ───────────────────────
       boxShadow: {
-        card: '0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.6)',
-        'card-hover': '0 4px 12px rgba(0,0,0,0.5)',
-        'accent-glow': '0 0 20px rgba(0,194,120,0.15)',
+        card: 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
+        sticky: 'var(--shadow-sticky)',
+        'accent-glow': '0 0 20px rgb(var(--accent-rgb) / 0.15)',
       },
 
       // ─── Backdrop blur ────────────────────────────────────────────

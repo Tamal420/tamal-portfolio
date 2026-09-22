@@ -6,23 +6,60 @@
 :root {
   /* Surfaces */
   --bg-base: #0A0A0A;
+  --bg-base-rgb: 10 10 10;
   --bg-raised: #111111;
+  --bg-raised-rgb: 17 17 17;
   --bg-card: #1A1A1A;
+  --bg-card-rgb: 26 26 26;
   --bg-elevated: #242424;
+  --bg-elevated-rgb: 36 36 36;
 
   /* Borders */
   --border-subtle: #2E2E2E;
+  --border-subtle-rgb: 46 46 46;
   --border-default: #3A3A3A;
+  --border-default-rgb: 58 58 58;
 
   /* Text */
   --ink-primary: #FAFAFA;
+  --ink-primary-rgb: 250 250 250;
   --ink-secondary: #A1A1A1;
+  --ink-secondary-rgb: 161 161 161;
   --ink-tertiary: #8A8A8A;
+  --ink-tertiary-rgb: 138 138 138;
+  --ink-on-primary: #0A0A0A;
+  --ink-on-accent: #0A0A0A;
 
-  /* Accent */
+  /* Accent — green default */
   --accent: #00C278;
+  --accent-rgb: 0 194 120;
   --accent-muted: #00875A;
+  --accent-muted-rgb: 0 135 90;
   --accent-surface: #001A0F;
+  --accent-surface-rgb: 0 26 15;
+  --accent-hover: #002A1A;
+  --accent-hover-rgb: 0 42 26;
+
+  /* Surface (cards/panels) — equals bg-card in dark */
+  --surface-card: #1A1A1A;
+  --surface-card-rgb: 26 26 26;
+  --surface-card-hover: #242424;
+  --surface-card-hover-rgb: 36 36 36;
+  --surface-interactive-hover: #242424;
+  --surface-interactive-hover-rgb: 36 36 36;
+
+  /* Interactive borders */
+  --border-interactive-hover: rgb(var(--accent-rgb) / 0.35);
+
+  /* Overlay / chrome */
+  --bg-overlay-rgb: 0 0 0;
+  --nav-scrolled-bg: rgba(10, 10, 10, 0.85);
+  --sticky-bar-bg: rgba(17, 17, 17, 0.92);
+
+  /* Shadows — dark-tuned */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.55);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-sticky: 0 -4px 20px rgba(0, 0, 0, 0.35);
 
   /* Nav */
   --nav-height: 64px;
@@ -31,6 +68,300 @@
   /* Container */
   --container-max: 1200px;
   --container-px: 1.25rem;
+}
+
+/* ─── Accent palettes (dark defaults) ───────────────────────────────────── */
+html[data-accent='blue'] {
+  --accent: #3B82F6;
+  --accent-rgb: 59 130 246;
+  --accent-muted: #2563EB;
+  --accent-muted-rgb: 37 99 235;
+  --accent-surface: #0A1628;
+  --accent-surface-rgb: 10 22 40;
+  --accent-hover: #122038;
+  --accent-hover-rgb: 18 32 56;
+}
+
+html[data-accent='purple'] {
+  --accent: #A78BFA;
+  --accent-rgb: 167 139 250;
+  --accent-muted: #7C3AED;
+  --accent-muted-rgb: 124 58 237;
+  --accent-surface: #140F24;
+  --accent-surface-rgb: 20 15 36;
+  --accent-hover: #1E1635;
+  --accent-hover-rgb: 30 22 53;
+}
+
+html[data-accent='orange'] {
+  --accent: #F59E0B;
+  --accent-rgb: 245 158 11;
+  --accent-muted: #D97706;
+  --accent-muted-rgb: 217 119 6;
+  --accent-surface: #1A1200;
+  --accent-surface-rgb: 26 18 0;
+  --accent-hover: #2A1C00;
+  --accent-hover-rgb: 42 28 0;
+}
+
+html[data-accent='red'] {
+  --accent: #F87171;
+  --accent-rgb: 248 113 113;
+  --accent-muted: #DC2626;
+  --accent-muted-rgb: 220 38 38;
+  --accent-surface: #1A0808;
+  --accent-surface-rgb: 26 8 8;
+  --accent-hover: #2A1010;
+  --accent-hover-rgb: 42 16 16;
+}
+
+html[data-accent='cyan'] {
+  --accent: #22D3EE;
+  --accent-rgb: 34 211 238;
+  --accent-muted: #0891B2;
+  --accent-muted-rgb: 8 145 178;
+  --accent-surface: #001418;
+  --accent-surface-rgb: 0 20 24;
+  --accent-hover: #002028;
+  --accent-hover-rgb: 0 32 40;
+}
+
+/* green is :root default; explicit for clarity when set */
+html[data-accent='green'] {
+  --accent: #00C278;
+  --accent-rgb: 0 194 120;
+  --accent-muted: #00875A;
+  --accent-muted-rgb: 0 135 90;
+  --accent-surface: #001A0F;
+  --accent-surface-rgb: 0 26 15;
+  --accent-hover: #002A1A;
+  --accent-hover-rgb: 0 42 26;
+}
+
+/*
+ * Light Theme — intentional cool-neutral system (not inverted dark).
+ * Canvas / bookend / mid-band hierarchy + soft slate shadows + deeper accents for AA.
+ */
+html[data-theme='light'] {
+  /* Backgrounds */
+  --bg-base: #F5F6F8;
+  --bg-base-rgb: 245 246 248;
+  --bg-raised: #FFFFFF;
+  --bg-raised-rgb: 255 255 255;
+  --bg-card: #EEF1F5;
+  --bg-card-rgb: 238 241 245;
+  --bg-elevated: #E2E6EC;
+  --bg-elevated-rgb: 226 230 236;
+
+  /* Surfaces — cards lift off mid-band / canvas */
+  --surface-card: #FFFFFF;
+  --surface-card-rgb: 255 255 255;
+  --surface-card-hover: #F8FAFC;
+  --surface-card-hover-rgb: 248 250 252;
+  --surface-interactive-hover: #F8FAFC;
+  --surface-interactive-hover-rgb: 248 250 252;
+
+  /* Borders — readable on white and gray */
+  --border-subtle: #DDE1E8;
+  --border-subtle-rgb: 221 225 232;
+  --border-default: #C5CAD3;
+  --border-default-rgb: 197 202 211;
+
+  /* Typography — cool slate, stepped hierarchy */
+  --ink-primary: #111827;
+  --ink-primary-rgb: 17 24 39;
+  --ink-secondary: #4B5563;
+  --ink-secondary-rgb: 75 85 99;
+  --ink-tertiary: #6B7280;
+  --ink-tertiary-rgb: 107 114 128;
+  --ink-on-primary: #FFFFFF;
+  --ink-on-accent: #FFFFFF;
+
+  /* Chrome */
+  --bg-overlay-rgb: 15 23 42;
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.92);
+  --sticky-bar-bg: rgba(255, 255, 255, 0.94);
+
+  /* Shadows — soft cool elevation (Linear/Stripe-like) */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.07);
+  --shadow-card-hover: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-sticky: 0 -1px 0 rgba(15, 23, 42, 0.06), 0 -10px 28px rgba(15, 23, 42, 0.06);
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-theme='system'] {
+    --bg-base: #F5F6F8;
+    --bg-base-rgb: 245 246 248;
+    --bg-raised: #FFFFFF;
+    --bg-raised-rgb: 255 255 255;
+    --bg-card: #EEF1F5;
+    --bg-card-rgb: 238 241 245;
+    --bg-elevated: #E2E6EC;
+    --bg-elevated-rgb: 226 230 236;
+    --surface-card: #FFFFFF;
+    --surface-card-rgb: 255 255 255;
+    --surface-card-hover: #F8FAFC;
+    --surface-card-hover-rgb: 248 250 252;
+    --surface-interactive-hover: #F8FAFC;
+    --surface-interactive-hover-rgb: 248 250 252;
+    --border-subtle: #DDE1E8;
+    --border-subtle-rgb: 221 225 232;
+    --border-default: #C5CAD3;
+    --border-default-rgb: 197 202 211;
+    --ink-primary: #111827;
+    --ink-primary-rgb: 17 24 39;
+    --ink-secondary: #4B5563;
+    --ink-secondary-rgb: 75 85 99;
+    --ink-tertiary: #6B7280;
+    --ink-tertiary-rgb: 107 114 128;
+    --ink-on-primary: #FFFFFF;
+    --ink-on-accent: #FFFFFF;
+    --bg-overlay-rgb: 15 23 42;
+    --nav-scrolled-bg: rgba(255, 255, 255, 0.92);
+    --sticky-bar-bg: rgba(255, 255, 255, 0.94);
+    --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.07);
+    --shadow-card-hover: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+    --shadow-sticky: 0 -1px 0 rgba(15, 23, 42, 0.06), 0 -10px 28px rgba(15, 23, 42, 0.06);
+  }
+}
+
+/* Light accents — deeper defaults for small-text AA on pale surfaces; soft tint fills */
+html[data-theme='light'][data-accent='green'],
+html[data-theme='light']:not([data-accent]) {
+  --accent: #059669;
+  --accent-rgb: 5 150 105;
+  --accent-muted: #047857;
+  --accent-muted-rgb: 4 120 87;
+  --accent-surface: #ECFDF5;
+  --accent-surface-rgb: 236 253 245;
+  --accent-hover: #D1FAE5;
+  --accent-hover-rgb: 209 250 229;
+}
+
+html[data-theme='light'][data-accent='blue'] {
+  --accent: #2563EB;
+  --accent-rgb: 37 99 235;
+  --accent-muted: #1D4ED8;
+  --accent-muted-rgb: 29 78 216;
+  --accent-surface: #EFF6FF;
+  --accent-surface-rgb: 239 246 255;
+  --accent-hover: #DBEAFE;
+  --accent-hover-rgb: 219 234 254;
+}
+
+html[data-theme='light'][data-accent='purple'] {
+  --accent: #7C3AED;
+  --accent-rgb: 124 58 237;
+  --accent-muted: #6D28D9;
+  --accent-muted-rgb: 109 40 217;
+  --accent-surface: #F5F3FF;
+  --accent-surface-rgb: 245 243 255;
+  --accent-hover: #EDE9FE;
+  --accent-hover-rgb: 237 233 254;
+}
+
+html[data-theme='light'][data-accent='orange'] {
+  --accent: #D97706;
+  --accent-rgb: 217 119 6;
+  --accent-muted: #B45309;
+  --accent-muted-rgb: 180 83 9;
+  --accent-surface: #FFFBEB;
+  --accent-surface-rgb: 255 251 235;
+  --accent-hover: #FEF3C7;
+  --accent-hover-rgb: 254 243 199;
+  --ink-on-accent: #111827;
+}
+
+html[data-theme='light'][data-accent='red'] {
+  --accent: #DC2626;
+  --accent-rgb: 220 38 38;
+  --accent-muted: #B91C1C;
+  --accent-muted-rgb: 185 28 28;
+  --accent-surface: #FEF2F2;
+  --accent-surface-rgb: 254 242 242;
+  --accent-hover: #FEE2E2;
+  --accent-hover-rgb: 254 226 226;
+}
+
+html[data-theme='light'][data-accent='cyan'] {
+  --accent: #0E7490;
+  --accent-rgb: 14 116 144;
+  --accent-muted: #0F766E;
+  --accent-muted-rgb: 15 118 110;
+  --accent-surface: #ECFEFF;
+  --accent-surface-rgb: 236 254 255;
+  --accent-hover: #CFFAFE;
+  --accent-hover-rgb: 207 250 254;
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-theme='system'][data-accent='green'],
+  html[data-theme='system']:not([data-accent]) {
+    --accent: #059669;
+    --accent-rgb: 5 150 105;
+    --accent-muted: #047857;
+    --accent-muted-rgb: 4 120 87;
+    --accent-surface: #ECFDF5;
+    --accent-surface-rgb: 236 253 245;
+    --accent-hover: #D1FAE5;
+    --accent-hover-rgb: 209 250 229;
+  }
+
+  html[data-theme='system'][data-accent='blue'] {
+    --accent: #2563EB;
+    --accent-rgb: 37 99 235;
+    --accent-muted: #1D4ED8;
+    --accent-muted-rgb: 29 78 216;
+    --accent-surface: #EFF6FF;
+    --accent-surface-rgb: 239 246 255;
+    --accent-hover: #DBEAFE;
+    --accent-hover-rgb: 219 234 254;
+  }
+
+  html[data-theme='system'][data-accent='purple'] {
+    --accent: #7C3AED;
+    --accent-rgb: 124 58 237;
+    --accent-muted: #6D28D9;
+    --accent-muted-rgb: 109 40 217;
+    --accent-surface: #F5F3FF;
+    --accent-surface-rgb: 245 243 255;
+    --accent-hover: #EDE9FE;
+    --accent-hover-rgb: 237 233 254;
+  }
+
+  html[data-theme='system'][data-accent='orange'] {
+    --accent: #D97706;
+    --accent-rgb: 217 119 6;
+    --accent-muted: #B45309;
+    --accent-muted-rgb: 180 83 9;
+    --accent-surface: #FFFBEB;
+    --accent-surface-rgb: 255 251 235;
+    --accent-hover: #FEF3C7;
+    --accent-hover-rgb: 254 243 199;
+    --ink-on-accent: #111827;
+  }
+
+  html[data-theme='system'][data-accent='red'] {
+    --accent: #DC2626;
+    --accent-rgb: 220 38 38;
+    --accent-muted: #B91C1C;
+    --accent-muted-rgb: 185 28 28;
+    --accent-surface: #FEF2F2;
+    --accent-surface-rgb: 254 242 242;
+    --accent-hover: #FEE2E2;
+    --accent-hover-rgb: 254 226 226;
+  }
+
+  html[data-theme='system'][data-accent='cyan'] {
+    --accent: #0E7490;
+    --accent-rgb: 14 116 144;
+    --accent-muted: #0F766E;
+    --accent-muted-rgb: 15 118 110;
+    --accent-surface: #ECFEFF;
+    --accent-surface-rgb: 236 254 255;
+    --accent-hover: #CFFAFE;
+    --accent-hover-rgb: 207 250 254;
+  }
 }
 
 @media (min-width: 640px) {
@@ -66,6 +397,14 @@
     scroll-margin-top: calc(var(--nav-height) + 16px);
   }
 
+  html,
+  body {
+    transition:
+      background-color 200ms ease,
+      color 200ms ease,
+      border-color 200ms ease;
+  }
+
   body {
     background-color: var(--bg-base);
     color: var(--ink-primary);
@@ -92,11 +431,11 @@
 
   /* Selection colour */
   ::selection {
-    background-color: rgba(0, 194, 120, 0.2);
+    background-color: rgb(var(--accent-rgb) / 0.22);
     color: var(--ink-primary);
   }
 
-  /* Scrollbar styling — subtle dark */
+  /* Scrollbar styling — subtle */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -180,17 +519,104 @@
     margin-bottom: 0.5rem;
   }
 
-  /* Card base */
+  /* Card base — surface-card lifts off mid-band in light; elevated hover in dark */
   .card-base {
-    background-color: var(--bg-card);
+    background-color: var(--surface-card);
     border: 0.5px solid var(--border-subtle);
     border-radius: 12px;
-    transition: border-color 200ms ease, background-color 200ms ease;
+    box-shadow: var(--shadow-card);
+    transition:
+      border-color 200ms ease,
+      background-color 200ms ease,
+      box-shadow 200ms ease;
   }
 
   .card-base:hover {
     border-color: var(--border-default);
-    background-color: var(--bg-elevated);
+    background-color: var(--surface-interactive-hover);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Clickable cards — accent border on hover/focus */
+  .card-interactive:hover,
+  .card-interactive:focus-visible {
+    border-color: var(--border-interactive-hover);
+  }
+
+  /* Neutral industry label — accent only via parent hover/focus */
+  .industry-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    height: 1.5rem;
+    padding: 0 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    border: 0.5px solid var(--border-subtle);
+    background-color: var(--surface-card);
+    color: var(--ink-secondary);
+    transition:
+      border-color 150ms ease,
+      color 150ms ease;
+  }
+
+  .group:hover .industry-badge,
+  .group:focus-visible .industry-badge {
+    border-color: var(--accent-muted);
+    color: var(--accent);
+  }
+
+  /* Filter chip — inactive state on light mid-band sections */
+  .filter-chip-inactive {
+    background-color: var(--surface-card);
+    border: 0.5px solid var(--border-subtle);
+  }
+
+  .filter-chip-inactive:hover {
+    border-color: var(--border-default);
+  }
+
+  /* Hero photo bottom fade — theme-aware */
+  .photo-scrim {
+    background: linear-gradient(to top, rgb(0 0 0 / 0.4) 0%, transparent 100%);
+  }
+
+  html[data-theme='light'] .photo-scrim {
+    background: linear-gradient(to top, rgb(15 23 42 / 0.06) 0%, transparent 100%);
+  }
+
+  @media (prefers-color-scheme: light) {
+    html[data-theme='system'] .photo-scrim {
+      background: linear-gradient(to top, rgb(15 23 42 / 0.06) 0%, transparent 100%);
+    }
+  }
+
+  /* Hero photo accent glow — softer in light */
+  .hero-accent-glow {
+    background: radial-gradient(
+      circle at center,
+      rgb(var(--accent-rgb) / 0.12) 0%,
+      transparent 70%
+    );
+  }
+
+  html[data-theme='light'] .hero-accent-glow {
+    background: radial-gradient(
+      circle at center,
+      rgb(var(--accent-rgb) / 0.05) 0%,
+      transparent 70%
+    );
+  }
+
+  @media (prefers-color-scheme: light) {
+    html[data-theme='system'] .hero-accent-glow {
+      background: radial-gradient(
+        circle at center,
+        rgb(var(--accent-rgb) / 0.05) 0%,
+        transparent 70%
+      );
+    }
   }
 
   /* Skill tag */
@@ -202,9 +628,15 @@
     border-radius: 4px;
     border: 0.5px solid var(--border-subtle);
     color: var(--ink-secondary);
-    background-color: var(--bg-card);
+    background-color: var(--surface-card);
     white-space: nowrap;
     margin: 2px;
+  }
+
+  /* Sticky bar chrome */
+  .sticky-bar-surface {
+    background-color: var(--sticky-bar-bg);
+    box-shadow: var(--shadow-sticky);
   }
 
   /* Accent pill — open to work, active states */
@@ -254,7 +686,7 @@
 
   /* Gradient text — used sparingly for hook sentence accent */
   .text-gradient {
-    background: linear-gradient(135deg, #FAFAFA 0%, #A1A1A1 100%);
+    background: linear-gradient(135deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -262,7 +694,7 @@
 
   /* Nav blur backdrop */
   .nav-scrolled {
-    background-color: rgba(10, 10, 10, 0.85);
+    background-color: var(--nav-scrolled-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 0.5px solid var(--border-subtle);
@@ -299,7 +731,7 @@
     padding: 0.625rem 1rem;
     border-radius: 0.375rem;
     background-color: var(--accent);
-    color: var(--bg-base);
+    color: var(--ink-on-accent);
     font-size: 0.875rem;
     font-weight: 600;
   }

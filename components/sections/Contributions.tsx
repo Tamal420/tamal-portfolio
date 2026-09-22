@@ -108,7 +108,7 @@ export function Contributions() {
                   setTimeout(() => scrollToSection(`#project-${project.id}`), 100)
                 }}
                 className={cn(
-                  'card-base rounded-xl p-5 text-left w-full h-full flex flex-col',
+                  'group card-base card-interactive rounded-xl p-5 text-left w-full h-full flex flex-col',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                   // WebEVV — primary featured project gets accent border emphasis
                   project.featured && 'border-accent-muted bg-accent-surface/40'
@@ -117,14 +117,7 @@ export function Contributions() {
               >
                 {/* Header: industry badge + featured flag */}
                 <div className="flex items-center justify-between mb-3 gap-2">
-                  <span
-                    className={cn(
-                      'inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full text-[11px] font-medium border',
-                      project.industryClasses.bg,
-                      project.industryClasses.text,
-                      project.industryClasses.border
-                    )}
-                  >
+                  <span className="industry-badge">
                     <Icon
                       name={INDUSTRY_ICON[project.industryLabel] ?? 'globe'}
                       size={12}

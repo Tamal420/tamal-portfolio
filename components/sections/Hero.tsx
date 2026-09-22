@@ -85,7 +85,7 @@ export function Hero() {
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse 70% 50% at 10% 0%, rgba(0,194,120,0.05) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 50% at 10% 0%, rgb(var(--accent-rgb) / 0.05) 0%, transparent 70%)',
         }}
       />
 
@@ -170,7 +170,7 @@ export function Hero() {
               <LinkButton
                 href={SITE.cvPath}
                 download={SITE.cvFilename}
-                variant="accent"
+                variant="primary"
                 size="lg"
                 className="w-full sm:w-auto font-semibold"
                 leftIcon={<DownloadIcon />}
@@ -181,7 +181,7 @@ export function Hero() {
 
               <Button
                 type="button"
-                variant="ghost"
+                variant="outline"
                 size="lg"
                 className="w-full sm:w-auto min-h-12 font-semibold"
                 rightIcon={<ArrowIcon />}
@@ -218,17 +218,13 @@ export function Hero() {
                 duration: 0.7,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="relative"
+              className="relative flex flex-col items-center"
             >
               {/* Accent glow ring behind photo */}
               <div
-                className="absolute inset-0 rounded-2xl"
+                className="absolute inset-0 rounded-2xl hero-accent-glow"
                 aria-hidden="true"
-                style={{
-                  background:
-                    'radial-gradient(circle at center, rgba(0,194,120,0.12) 0%, transparent 70%)',
-                  transform: 'scale(1.1)',
-                }}
+                style={{ transform: 'scale(1.1)' }}
               />
 
               {/* Photo container */}
@@ -265,21 +261,17 @@ export function Hero() {
 
                 {/* Overlay gradient at bottom of photo — blends into content */}
                 <div
-                  className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none"
+                  className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none photo-scrim"
                   aria-hidden="true"
-                  style={{
-                    background:
-                      'linear-gradient(to top, rgba(17,17,17,0.4) 0%, transparent 100%)',
-                  }}
                 />
               </div>
 
-              {/* Floating badge: company */}
+              {/* Company/location caption — kept below the photo so it never obscures it */}
               <div
                 className={cn(
-                  'absolute -bottom-3 left-1/2 -translate-x-1/2',
+                  'relative mt-3',
                   'flex items-center gap-2 px-4 py-2',
-                  'bg-base-card border border-border-subtle rounded-full',
+                  'bg-surface-card border border-border-subtle rounded-full',
                   'whitespace-nowrap shadow-card'
                 )}
                 aria-hidden="true"
@@ -299,16 +291,17 @@ export function Hero() {
         onClick={() => scrollToSection('#impact')}
         className={cn(
           'absolute bottom-8 left-1/2 -translate-x-1/2',
-          'flex flex-col items-center gap-1',
-          'text-ink-tertiary hover:text-ink-secondary transition-colors',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded'
+          'flex min-h-11 min-w-11 flex-col items-center justify-center gap-0.5 px-3 py-2',
+          'rounded-md border border-border-default bg-surface-card/90 shadow-card',
+          'text-ink-secondary hover:border-accent-muted hover:text-accent hover:bg-base-elevated transition-colors',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base-raised'
         )}
         initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.5 }}
         aria-label="Scroll down to Impact Wall"
       >
-        <span className="text-[10px] uppercase tracking-widest font-medium">Scroll</span>
+        <span className="text-xs uppercase tracking-widest font-semibold">Scroll</span>
         <motion.span
           animate={shouldReduceMotion ? {} : { y: [0, 4, 0] }}
           transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}

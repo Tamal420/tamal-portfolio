@@ -40,7 +40,7 @@ export function FilterBar({ active, onChange, counts }: FilterBarProps) {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
               isActive
                 ? 'text-accent'
-                : 'text-ink-tertiary hover:text-ink-secondary border border-border-subtle hover:border-border-default'
+                : 'text-ink-tertiary hover:text-ink-secondary filter-chip-inactive'
             )}
             aria-pressed={isActive}
             aria-label={`Filter: ${getFilterLabel(filter)}, ${count} project${count !== 1 ? 's' : ''}`}

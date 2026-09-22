@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect } from 'react'
+import { SITE } from '@/lib/constants'
+import { Button, LinkButton } from '@/components/ui/Button'
 
 export default function Error({
   error,
@@ -16,10 +18,11 @@ export default function Error({
   return (
     <main
       className="min-h-screen flex flex-col items-center justify-center bg-base px-6 text-center"
+      role="alert"
       aria-labelledby="error-heading"
     >
       <p className="text-[11px] uppercase tracking-widest font-semibold text-accent mb-3">
-        Error
+        Unable to load
       </p>
       <h1
         id="error-heading"
@@ -27,24 +30,28 @@ export default function Error({
       >
         Something went wrong
       </h1>
-      <p className="text-sm text-ink-secondary mb-8 max-w-sm">
-        This page failed to load. You can try again, or return to the homepage.
+      <p className="text-sm text-ink-secondary mb-8 max-w-md leading-relaxed">
+        This page failed to load, so the portfolio content could not be shown.
+        Try again. If it keeps happening, email me or return to the homepage.
       </p>
-      <div className="flex flex-col sm:flex-row gap-3">
-        <button
-          type="button"
-          onClick={reset}
-          className="inline-flex items-center justify-center h-11 px-6 rounded-md text-sm font-semibold bg-ink-primary text-[#0A0A0A] hover:bg-ink-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-        >
+      <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
+        <Button type="button" variant="primary" size="md" onClick={reset}>
           Try again
-        </button>
-        <a
-          href="/"
-          className="inline-flex items-center justify-center h-11 px-6 rounded-md text-sm font-medium text-ink-primary border border-border-default hover:bg-base-elevated transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        </Button>
+        <LinkButton
+          href={`mailto:${SITE.email}?subject=${encodeURIComponent('Portfolio page failed to load')}`}
+          variant="outline"
+          size="md"
         >
+          Email Tamal
+        </LinkButton>
+        <LinkButton href="/" variant="outline" size="md">
           Back to homepage
-        </a>
+        </LinkButton>
       </div>
+      {error.digest ? (
+        <p className="mt-6 text-xs text-ink-tertiary">Reference: {error.digest}</p>
+      ) : null}
     </main>
   )
 }

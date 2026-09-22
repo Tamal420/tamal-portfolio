@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { AppearanceProvider } from '@/components/theme/AppearanceProvider'
+import { APPEARANCE_INIT_SCRIPT } from '@/lib/appearance'
 import './globals.css'
 
 // ─── Fonts ───────────────────────────────────────────────────────────────────
@@ -109,22 +111,29 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      data-theme="system"
+      data-accent="green"
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: APPEARANCE_INIT_SCRIPT }} />
+      </head>
       <body className="font-sans bg-base text-ink-primary antialiased">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
-        <noscript>
-          <div
-            role="status"
-            className="bg-base-raised border-b border-border-subtle px-6 py-4 text-center text-sm text-ink-secondary"
-          >
-            JavaScript is disabled. Portfolio content is still available below.
-            For the best experience, enable JavaScript.
-          </div>
-        </noscript>
-        {children}
+        <AppearanceProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <noscript>
+            <div
+              role="status"
+              className="bg-base-raised border-b border-border-subtle px-6 py-4 text-center text-sm text-ink-secondary"
+            >
+              JavaScript is disabled. Portfolio content is still available below.
+              For the best experience, enable JavaScript.
+            </div>
+          </noscript>
+          {children}
+        </AppearanceProvider>
       </body>
     </html>
   )

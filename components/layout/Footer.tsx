@@ -31,7 +31,7 @@ export function Footer() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-xs text-ink-tertiary hover:text-ink-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+                className="text-xs text-ink-tertiary hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
               >
                 {link.label}
               </a>

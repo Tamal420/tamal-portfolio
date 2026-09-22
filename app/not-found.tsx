@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { LinkButton } from '@/components/ui/Button'
 
 export default function NotFound() {
   return (
@@ -18,12 +19,9 @@ export default function NotFound() {
       <p className="text-sm text-ink-secondary mb-8 max-w-sm">
         The page you&apos;re looking for isn&apos;t here. Head back to the homepage to view Tamal Saha&apos;s QA portfolio.
       </p>
-      <Link
-        href="/"
-        className="inline-flex items-center justify-center h-11 px-6 rounded-md text-sm font-semibold bg-ink-primary text-[#0A0A0A] hover:bg-ink-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-      >
+      <LinkButton href="/" variant="primary" size="md">
         Back to homepage
-      </Link>
+      </LinkButton>
     </main>
   )
 }

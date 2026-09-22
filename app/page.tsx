@@ -3,6 +3,7 @@ import { Nav } from '@/components/layout/Nav'
 import { StickyBar } from '@/components/layout/StickyBar'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
+import { DevelopmentActivitySkeleton } from '@/components/sections/DevelopmentActivitySkeleton'
 
 /**
  * Below-fold sections are code-split so the initial JS payload stays
@@ -28,6 +29,10 @@ const AutomationJourney = dynamic(() =>
   import('@/components/sections/AutomationJourney').then((m) => ({
     default: m.AutomationJourney,
   }))
+)
+const DevelopmentActivity = dynamic(
+  () => import('@/components/sections/DevelopmentActivity'),
+  { loading: () => <DevelopmentActivitySkeleton /> }
 )
 const Skills = dynamic(() =>
   import('@/components/sections/Skills').then((m) => ({ default: m.Skills }))
@@ -71,6 +76,7 @@ export default function Home() {
         <BugHallOfFame />
         <QAThinkingLab />
         <AutomationJourney />
+        <DevelopmentActivity />
         <Skills />
         <About />
         <Contact />

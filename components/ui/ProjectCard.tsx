@@ -38,7 +38,7 @@ export function ProjectCard({ project, isOpen, onToggle }: ProjectCardProps) {
       id={`project-${project.id}`}
       layout
       className={cn(
-        'card-base rounded-xl overflow-hidden',
+        'card-base rounded-xl overflow-hidden group',
         isFeatured && 'border-accent-muted bg-accent-surface/30 lg:col-span-2'
       )}
     >
@@ -53,20 +53,13 @@ export function ProjectCard({ project, isOpen, onToggle }: ProjectCardProps) {
         {/* Header row: industry badge + featured tag + chevron */}
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <span
-              className={cn(
-                'inline-flex items-center gap-1.5 h-6 px-2.5 rounded-full text-[11px] font-medium border',
-                industry.bgClass,
-                industry.textClass,
-                industry.borderClass
-              )}
-            >
+            <span className="industry-badge">
               <Icon name={INDUSTRY_ICON[project.industry]} size={11} />
               {industry.label}
             </span>
 
             {isFeatured && (
-              <span className="inline-flex items-center h-6 px-2.5 rounded-full text-[11px] font-semibold bg-accent text-[#0A0A0A]">
+              <span className="inline-flex items-center h-6 px-2.5 rounded-full text-[11px] font-semibold bg-accent text-ink-on-accent">
                 Featured Project
               </span>
             )}

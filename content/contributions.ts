@@ -89,7 +89,6 @@ export interface ProjectContribution {
   name: string
   tagline: string
   industryLabel: string
-  industryClasses: { bg: string; text: string; border: string }
   platformCount: number
   testingTypeCount: number
   topTestingTypes: string[] // first 3, for compact display
@@ -105,11 +104,6 @@ export const projectContributions: ProjectContribution[] = projects
       name: p.name,
       tagline: p.tagline,
       industryLabel: industry.label,
-      industryClasses: {
-        bg: industry.bgClass,
-        text: industry.textClass,
-        border: industry.borderClass,
-      },
       platformCount: p.platforms.length,
       testingTypeCount: p.testingTypes.length,
       topTestingTypes: p.testingTypes.slice(0, 3),

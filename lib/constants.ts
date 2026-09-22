@@ -16,6 +16,8 @@ export const SITE = {
   photoPath: '/portfolio_image.png',
 } as const
 
+export const GITHUB_USERNAME = 'Tamal420'
+
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
 export const NAV_LINKS = [
@@ -23,6 +25,7 @@ export const NAV_LINKS = [
   { label: 'Bugs',       href: '#bugs' },
   { label: 'Lab',        href: '#lab' },
   { label: 'Automation', href: '#automation' },
+  { label: 'Development', href: '#development' },
   { label: 'Skills',     href: '#skills' },
   { label: 'About',      href: '#about' },
   { label: 'Contact',    href: '#contact' },
@@ -33,21 +36,12 @@ export const NAV_LINKS = [
 export const INDUSTRY_CONFIG = {
   healthcare: {
     label: 'Healthcare SaaS',
-    bgClass: 'bg-accent-surface',
-    textClass: 'text-accent',
-    borderClass: 'border-accent-muted',
   },
   edtech: {
     label: 'EdTech',
-    bgClass: 'bg-[#1A1200]',
-    textClass: 'text-[#F59E0B]',
-    borderClass: 'border-[#7A4A00]',
   },
   streaming: {
     label: 'Music Streaming',
-    bgClass: 'bg-[#0D0020]',
-    textClass: 'text-[#A78BFA]',
-    borderClass: 'border-[#4C1D95]',
   },
 } as const
 
